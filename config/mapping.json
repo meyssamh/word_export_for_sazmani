@@ -1,0 +1,805 @@
+{
+  "mappings": [
+    {
+      "placeholder": "system_title",
+      "jsonPath": "formData.system_title"
+    },
+    {
+      "placeholder": "system_title_1",
+      "jsonPath": "formData.system_title"
+    },
+    {
+      "placeholder": "systemUrls",
+      "jsonPath": "formData.systemUrls"
+    },
+    {
+      "placeholder": "system_type",
+      "jsonPath": "formData.system_type"
+    },
+    {
+      "placeholder": "system_type_description",
+      "jsonPath": "formData.system_type_description"
+    },
+    {
+      "placeholder": "system_user",
+      "jsonPath": "formData.system_user"
+    },
+    {
+      "placeholder": "system_user_description",
+      "jsonPath": "formData.system_user_description"
+    },
+    {
+      "placeholder": "system_owner",
+      "jsonPath": "formData.system_owner"
+    },
+    {
+      "placeholder": "filler_name",
+      "jsonPath": "formData.form_completer[0].name"
+    },
+    {
+      "placeholder": "systemMission",
+      "jsonPath": "formData.systemMission"
+    },
+    {
+      "placeholder": "systemMission_description",
+      "jsonPath": "formData.systemMission_description"
+    },
+    {
+      "placeholder": "mainFunctions",
+      "jsonPath": "formData.mainFunctions"
+    },
+    {
+      "placeholder": "mainFunctions_description",
+      "jsonPath": "formData.mainFunctions_description"
+    },
+    {
+      "placeholder": "supported_services",
+      "jsonPath": "formData.supportedBusinessServices[].serviceId.title"
+    },
+    {
+      "placeholder": "supportedBusinessServices_description",
+      "jsonPath": "formData.supportedBusinessServices_description"
+    },
+    {
+      "placeholder": "unsupported_services",
+      "jsonPath": "formData.unsupportedBusinessServices[].serviceId.title"
+    },
+    {
+      "placeholder": "unsupportedServices_description",
+      "jsonPath": "formData.unsupportedBusinessServices_description"
+    },
+    {
+      "placeholder": "legals_table",
+      "jsonPath": "formData.legalBasis"
+    },
+    {
+      "placeholder": "legalBasis_description",
+      "jsonPath": "formData.legalBasis_description"
+    },
+    {
+      "placeholder": "acquisition_method",
+      "jsonPath": "formData.acquisitionMethod"
+    },
+    {
+      "placeholder": "acquisitionMethod_description",
+      "jsonPath": "formData.acquisitionMethod_description"
+    },
+    {
+      "placeholder": "contractorInfo",
+      "jsonPath": "formData.contractorInfo.name"
+    },
+    {
+      "placeholder": "contractorInfo_description",
+      "jsonPath": "formData.contractorInfo_description"
+    },
+    {
+      "placeholder": "current_status",
+      "jsonPath": "formData.systemStatus"
+    },
+    {
+      "placeholder": "status_description",
+      "jsonPath": "formData.systemStatus_description"
+    },
+    {
+      "placeholder": "system_start_date",
+      "jsonPath": "formData.operationStartDate"
+    },
+    {
+      "placeholder": "subsystem",
+      "jsonPath": "formData.hasSubsystems"
+    },
+    {
+      "placeholder": "subsystem_description",
+      "jsonPath": "formData.hasSubsystems_description"
+    },
+    {
+      "placeholder": "hasSubsystems_description",
+      "jsonPath": "formData.hasSubsystems_description"
+    },
+    {
+      "placeholder": "replacementPlan",
+      "jsonPath": "formData.replacementPlan"
+    },
+    {
+      "placeholder": "replacementPlan_description",
+      "jsonPath": "formData.replacementPlan_description"
+    },
+    {
+      "placeholder": "duplicate_systems",
+      "jsonPath": "formData.duplicateSystems"
+    },
+    {
+      "placeholder": "duplicateSystems_description",
+      "jsonPath": "formData.duplicateSystems_description"
+    },
+    {
+      "placeholder": "data_table",
+      "jsonPath": "formData.coreData"
+    },
+    {
+      "placeholder": "coreData_description",
+      "jsonPath": "formData.coreData_description"
+    },
+    {
+      "placeholder": "unsupportedData_table",
+      "jsonPath": "formData.unsupportedData"
+    },
+    {
+      "placeholder": "unsupportedData_description",
+      "jsonPath": "formData.unsupportedData_description"
+    },
+    {
+      "placeholder": "systemInteraction",
+      "jsonPath": "formData.systemInteraction"
+    },
+    {
+      "placeholder": "systemInteraction_table",
+      "jsonPath": "formData.currentSystemRelations"
+    },
+    {
+      "placeholder": "systemInteraction_description",
+      "jsonPath": "formData.systemInteraction_description"
+    },
+    {
+      "placeholder": "desiredSystemRelations_table",
+      "jsonPath": "formData.desiredSystemRelations"
+    },
+    {
+      "placeholder": "desiredSystemRelations_description",
+      "jsonPath": "formData.desiredSystemRelations_description"
+    },
+    {
+      "placeholder": "systemRelationIssues_table",
+      "jsonPath": "formData.systemRelationIssues"
+    },
+    {
+      "placeholder": "systemRelationIssues_description",
+      "jsonPath": "formData.systemRelationIssues_description"
+    },
+    {
+      "placeholder": "directDbAccess",
+      "jsonPath": "formData.directDbAccess"
+    },
+    {
+      "placeholder": "directDbAccess_description",
+      "jsonPath": "formData.directDbAccess_description"
+    },
+    {
+      "placeholder": "headquarters_unit_name",
+      "jsonPath": "formData.user_domains.headquarters.unit_name"
+    },
+    {
+      "placeholder": "headquarters_estimated_users",
+      "jsonPath": "formData.user_domains.headquarters.estimated_users"
+    },
+    {
+      "placeholder": "headquarters_time_limit",
+      "jsonPath": "formData.user_domains.headquarters.time_limit"
+    },
+    {
+      "placeholder": "headquarters_peak_time",
+      "jsonPath": "formData.user_domains.headquarters.peak_time"
+    },
+    {
+      "placeholder": "headquarters_used_features",
+      "jsonPath": "formData.user_domains.headquarters.used_features"
+    },
+    {
+      "placeholder": "tax_offices_unit_name",
+      "jsonPath": "formData.user_domains.tax_offices.unit_name"
+    },
+    {
+      "placeholder": "tax_offices_estimated_users",
+      "jsonPath": "formData.user_domains.tax_offices.estimated_users"
+    },
+    {
+      "placeholder": "tax_offices_time_limit",
+      "jsonPath": "formData.user_domains.tax_offices.time_limit"
+    },
+    {
+      "placeholder": "tax_offices_peak_time",
+      "jsonPath": "formData.user_domains.tax_offices.peak_time"
+    },
+    {
+      "placeholder": "tax_offices_used_features",
+      "jsonPath": "formData.user_domains.tax_offices.used_features"
+    },
+    {
+      "placeholder": "other_orgs_unit_name",
+      "jsonPath": "formData.user_domains.other_orgs.unit_name"
+    },
+    {
+      "placeholder": "other_orgs_estimated_users",
+      "jsonPath": "formData.user_domains.other_orgs.estimated_users"
+    },
+    {
+      "placeholder": "other_orgs_time_limit",
+      "jsonPath": "formData.user_domains.other_orgs.time_limit"
+    },
+    {
+      "placeholder": "other_orgs_peak_time",
+      "jsonPath": "formData.user_domains.other_orgs.peak_time"
+    },
+    {
+      "placeholder": "other_orgs_used_features",
+      "jsonPath": "formData.user_domains.other_orgs.used_features"
+    },
+    {
+      "placeholder": "taxpayers_unit_name",
+      "jsonPath": "formData.user_domains.taxpayers.unit_name"
+    },
+    {
+      "placeholder": "taxpayers_estimated_users",
+      "jsonPath": "formData.user_domains.taxpayers.estimated_users"
+    },
+    {
+      "placeholder": "taxpayers_time_limit",
+      "jsonPath": "formData.user_domains.taxpayers.time_limit"
+    },
+    {
+      "placeholder": "taxpayers_peak_time",
+      "jsonPath": "formData.user_domains.taxpayers.peak_time"
+    },
+    {
+      "placeholder": "taxpayers_used_features",
+      "jsonPath": "formData.user_domains.taxpayers.used_features"
+    },
+    {
+      "placeholder": "businesses_unit_name",
+      "jsonPath": "formData.user_domains.businesses.unit_name"
+    },
+    {
+      "placeholder": "businesses_estimated_users",
+      "jsonPath": "formData.user_domains.businesses.estimated_users"
+    },
+    {
+      "placeholder": "businesses_time_limit",
+      "jsonPath": "formData.user_domains.businesses.time_limit"
+    },
+    {
+      "placeholder": "businesses_peak_time",
+      "jsonPath": "formData.user_domains.businesses.peak_time"
+    },
+    {
+      "placeholder": "businesses_used_features",
+      "jsonPath": "formData.user_domains.businesses.used_features"
+    },
+    {
+      "placeholder": "user_domains_description",
+      "jsonPath": "formData.user_domains_description"
+    },
+    {
+      "placeholder": "unauthorizedUsers_table",
+      "jsonPath": "formData.unauthorizedUsers"
+    },
+    {
+      "placeholder": "unauthorizedUsers_description",
+      "jsonPath": "formData.unauthorizedUsers_description"
+    },
+    {
+      "placeholder": "architecture",
+      "jsonPath": "formData.architecture"
+    },
+    {
+      "placeholder": "architecture_description",
+      "jsonPath": "formData.architecture_description"
+    },
+    {
+      "placeholder": "operating_system",
+      "jsonPath": "formData.technology.operating_system"
+    },
+    {
+      "placeholder": "programming_languages",
+      "jsonPath": "formData.technology.programming_languages"
+    },
+    {
+      "placeholder": "frameworks",
+      "jsonPath": "formData.technology.frameworks"
+    },
+    {
+      "placeholder": "third_party_tools",
+      "jsonPath": "formData.third_party_tools"
+    },
+    {
+      "placeholder": "third_party_tools_description",
+      "jsonPath": "formData.third_party_tools_description"
+    },
+    {
+      "placeholder": "database",
+      "jsonPath": "formData.database_specs.database"
+    },
+    {
+      "placeholder": "database_specs_description",
+      "jsonPath": "formData.database_specs_description"
+    },
+    {
+      "placeholder": "tables_count",
+      "jsonPath": "formData.database_specs.tables_count"
+    },
+    {
+      "placeholder": "views_count",
+      "jsonPath": "formData.database_specs.views_count"
+    },
+    {
+      "placeholder": "stored_procedures_count",
+      "jsonPath": "formData.database_specs.stored_procedures_count"
+    },
+    {
+      "placeholder": "functions_count",
+      "jsonPath": "formData.database_specs.functions_count"
+    },
+    {
+      "placeholder": "triggers_count",
+      "jsonPath": "formData.database_specs.triggers_count"
+    },
+    {
+      "placeholder": "largest_table_records",
+      "jsonPath": "formData.database_specs.largest_table_records"
+    },
+    {
+      "placeholder": "db_constraints",
+      "jsonPath": "formData.database_specs.db_constraints"
+    },
+    {
+      "placeholder": "infrastructure",
+      "jsonPath": "formData.infrastructure"
+    },
+    {
+      "placeholder": "infrastructure_description",
+      "jsonPath": "formData.infrastructure_description"
+    },
+    {
+      "placeholder": "monitoring_tools",
+      "jsonPath": "formData.monitoring_tools"
+    },
+    {
+      "placeholder": "monitoring_tools_description",
+      "jsonPath": "formData.monitoring_tools_description"
+    },
+    {
+      "placeholder": "load_balancing",
+      "jsonPath": "formData.load_balancing"
+    },
+    {
+      "placeholder": "load_balancing_description",
+      "jsonPath": "formData.load_balancing_description"
+    },
+    {
+      "placeholder": "authentication_methods",
+      "jsonPath": "formData.authentication_methods"
+    },
+    {
+      "placeholder": "authentication_methods_description",
+      "jsonPath": "formData.authentication_methods_description"
+    },
+    {
+      "placeholder": "blockchain",
+      "jsonPath": "formData.blockchain"
+    },
+    {
+      "placeholder": "blockchain_description",
+      "jsonPath": "formData.blockchain_description"
+    },
+    {
+      "placeholder": "ai_usage",
+      "jsonPath": "formData.ai"
+    },
+    {
+      "placeholder": "ai_description",
+      "jsonPath": "formData.ai_description"
+    },
+    {
+      "placeholder": "pki",
+      "jsonPath": "formData.pki"
+    },
+    {
+      "placeholder": "pki_description",
+      "jsonPath": "formData.pki_description"
+    },
+    {
+      "placeholder": "pki_implementation",
+      "jsonPath": "formData.pki_details.pki_implementation"
+    },
+    {
+      "placeholder": "pki_implementation_description",
+      "jsonPath": "formData.pki_details.pki_implementation_description"
+    },
+    {
+      "placeholder": "pki_usage",
+      "jsonPath": "formData.pki_details.pki_usage"
+    },
+    {
+      "placeholder": "pki_usage_description",
+      "jsonPath": "formData.pki_details.pki_usage_description"
+    },
+    {
+      "placeholder": "certificate_purpose",
+      "jsonPath": "formData.pki_details.certificate_purpose"
+    },
+    {
+      "placeholder": "centralization",
+      "jsonPath": "formData.system_distribution"
+    },
+    {
+      "placeholder": "distribution_desc",
+      "jsonPath": "formData.system_distribution_description"
+    },
+    {
+      "placeholder": "db_dev_limits",
+      "jsonPath": "formData.development_limitations"
+    },
+    {
+      "placeholder": "app_dev_limits",
+      "jsonPath": "formData.development_limitations"
+    },
+    {
+      "placeholder": "service_dev_limits",
+      "jsonPath": "formData.development_limitations"
+    },
+    {
+      "placeholder": "development_limitations_description",
+      "jsonPath": "formData.development_limitations_description"
+    },
+    {
+      "placeholder": "development_challenges",
+      "jsonPath": "formData.development_challenges"
+    },
+    {
+      "placeholder": "development_challenges_description",
+      "jsonPath": "formData.development_challenges_description"
+    },
+    {
+      "placeholder": "current_hardware",
+      "jsonPath": "formData.current_hardware"
+    },
+    {
+      "placeholder": "future_hardware",
+      "jsonPath": "formData.future_hardware"
+    },
+    {
+      "placeholder": "support_method",
+      "jsonPath": "formData.support_method"
+    },
+    {
+      "placeholder": "support_method_description",
+      "jsonPath": "formData.support_method_description"
+    },
+    {
+      "placeholder": "support_quality",
+      "jsonPath": "formData.support_quality"
+    },
+    {
+      "placeholder": "support_quality_description",
+      "jsonPath": "formData.support_quality_description"
+    },
+    {
+      "placeholder": "local_backup_by_admin",
+      "jsonPath": "formData.backup_info[0].local_backup_by_admin"
+    },
+    {
+      "placeholder": "backup_method",
+      "jsonPath": "formData.backup_info[0].backup_method"
+    },
+    {
+      "placeholder": "backup_type",
+      "jsonPath": "formData.backup_info[0].backup_type"
+    },
+    {
+      "placeholder": "backup_schedule",
+      "jsonPath": "formData.backup_info[0].backup_schedule"
+    },
+    {
+      "placeholder": "backup_storage",
+      "jsonPath": "formData.backup_info[0].backup_storage"
+    },
+    {
+      "placeholder": "backup_testing",
+      "jsonPath": "formData.backup_info[0].backup_testing"
+    },
+    
+    {
+      "placeholder": "backup_description",
+      "jsonPath": "formData.backup_info[0].backup_description"
+    },
+    {
+      "placeholder": "backup_info_description",
+      "jsonPath": "formData.backup_info_description"
+    },
+    {
+      "placeholder": "retention_policy",
+      "jsonPath": "formData.backup_info[0].retention_policy"
+    },
+    {
+      "placeholder": "recovery_mechanism",
+      "jsonPath": "formData.recovery_mechanism"
+    },
+    {
+      "placeholder": "recovery_mechanism_description",
+      "jsonPath": "formData.recovery_mechanism_description"
+    },
+    {
+      "placeholder": "requirements_docs",
+      "jsonPath": "formData.documentation_status.requirements_docs"
+    },
+    {
+      "placeholder": "analysis_docs",
+      "jsonPath": "formData.documentation_status.analysis_docs"
+    },
+    {
+      "placeholder": "architecture_docs",
+      "jsonPath": "formData.documentation_status.architecture_docs"
+    },
+    {
+      "placeholder": "implementation_docs",
+      "jsonPath": "formData.documentation_status.implementation_docs"
+    },
+    {
+      "placeholder": "test_docs",
+      "jsonPath": "formData.documentation_status.test_docs"
+    },
+    {
+      "placeholder": "user_manual",
+      "jsonPath": "formData.documentation_status.user_manual"
+    },
+    {
+      "placeholder": "operation_manual",
+      "jsonPath": "formData.documentation_status.operation_manual"
+    },
+    {
+      "placeholder": "source_code",
+      "jsonPath": "formData.documentation_status.source_code"
+    },
+    {
+      "placeholder": "security_docs",
+      "jsonPath": "formData.documentation_status.security_docs"
+    },
+    {
+      "placeholder": "risk_assessment",
+      "jsonPath": "formData.documentation_status.risk_assessment"
+    },
+    {
+      "placeholder": "documentation_status_description",
+      "jsonPath": "formData.documentation_status_description"
+    },
+    {
+      "placeholder": "intellectual_property",
+      "jsonPath": "formData.intellectual_property"
+    },
+    {
+      "placeholder": "intellectual_property_organization",
+      "jsonPath": "formData.intellectual_property_organization.name"
+    },
+    {
+      "placeholder": "intellectual_property_description",
+      "jsonPath": "formData.intellectual_property_description"
+    },
+    {
+      "placeholder": "user_satisfaction",
+      "jsonPath": "formData.user_satisfaction"
+    },
+    {
+      "placeholder": "user_satisfaction_description",
+      "jsonPath": "formData.user_satisfaction_description"
+    },
+    {
+      "placeholder": "functional_problems",
+      "jsonPath": "formData.functional_issues[].issue"
+    },
+    {
+      "placeholder": "memory_(req)",
+      "jsonPath": "formData.future_hardware[0].future_memory"
+    },
+    {
+      "placeholder": "processor_(req)",
+      "jsonPath": "formData.future_hardware[0].future_cpu_cores"
+    },
+    {
+      "placeholder": "functional_issues_description",
+      "jsonPath": "formData.functional_issues_description"
+    },
+    {
+      "placeholder": "storage_(req)",
+      "jsonPath": "formData.future_hardware[0].future_storage"
+    },
+    {
+      "placeholder": "sub_systems",
+      "jsonPath": "formData.sub_systems[].systemName"
+    },
+    {
+      "placeholder": "sub_systems_description",
+      "jsonPath": "formData.sub_systems_description"
+    },
+    {
+      "placeholder": "contractor_liaison",
+      "jsonPath": "formData.contractor_liaison"
+    },
+    {
+      "placeholder": "Improvements",
+      "jsonPath": "formData.improvement_details"
+    },
+    {
+      "placeholder": "Tech Specs",
+      "jsonPath": "formData.technology_description"
+    },
+    {
+      "placeholder": "technology_description",
+      "jsonPath": "formData.technology_description"
+    },
+    {
+      "placeholder": "load_balancing",
+      "jsonPath": "formData.load_balancing"
+    },
+    {
+      "placeholder": "load_balancing_description",
+      "jsonPath": "formData.load_balancing_description"
+    },
+    {
+      "placeholder": "non-functional_problems",
+      "jsonPath": "formData.non_functional_issues[].issue"
+    },
+    {
+      "placeholder": "non_functional_issues_description",
+      "jsonPath": "formData.non_functional_issues_description"
+    },
+    {
+      "placeholder": "operational_problems",
+      "jsonPath": "formData.operational_issues[].issue"
+    },
+    {
+      "placeholder": "operational_issues_description",
+      "jsonPath": "formData.operational_issues_description"
+    },
+    {
+      "placeholder": "reports_status",
+      "jsonPath": "formData.reports_status"
+    },
+    {
+      "placeholder": "reports_status_description",
+      "jsonPath": "formData.reports_status_description"
+    },
+    {
+      "placeholder": "requirement_coverage",
+      "jsonPath": "formData.quality_metrics.requirements_coverage"
+    },
+    {
+      "placeholder": "change_time",
+      "jsonPath": "formData.quality_metrics.change_time"
+    },
+    {
+      "placeholder": "error_free",
+      "jsonPath": "formData.quality_metrics.error_free"
+    },
+    {
+      "placeholder": "error_prevention",
+      "jsonPath": "formData.quality_metrics.error_prevention"
+    },
+    {
+      "placeholder": "data_recovery",
+      "jsonPath": "formData.quality_metrics.data_recovery"
+    },
+    {
+      "placeholder": "data_export",
+      "jsonPath": "formData.quality_metrics.data_export"
+    },
+    {
+      "placeholder": "data_import",
+      "jsonPath": "formData.quality_metrics.data_import"
+    },
+    {
+      "placeholder": "data_format",
+      "jsonPath": "formData.quality_metrics.data_format"
+    },
+    {
+      "placeholder": "standard_protocols",
+      "jsonPath": "formData.quality_metrics.standard_protocols"
+    },
+    {
+      "placeholder": "data_encryption",
+      "jsonPath": "formData.quality_metrics.data_encryption"
+    },
+    {
+      "placeholder": "activity_logging",
+      "jsonPath": "formData.quality_metrics.activity_logging"
+    },
+    {
+      "placeholder": "access_control",
+      "jsonPath": "formData.quality_metrics.access_control"
+    },
+    {
+      "placeholder": "authentication",
+      "jsonPath": "formData.quality_metrics.authentication"
+    },
+    {
+      "placeholder": "penetration_testing",
+      "jsonPath": "formData.quality_metrics.nofuz_test"
+    },
+    {
+      "placeholder": "hardening",
+      "jsonPath": "formData.quality_metrics.hardening"
+    },
+    {
+      "placeholder": "security_certification",
+      "jsonPath": "formData.quality_metrics.security_certification"
+    },
+    {
+      "placeholder": "security_certification_description",
+      "jsonPath": "formData.security_certification_description"
+    },
+    {
+      "placeholder": "ui_consistency",
+      "jsonPath": "formData.quality_metrics.ui_consistency"
+    },
+    {
+      "placeholder": "ui_attractiveness",
+      "jsonPath": "formData.quality_metrics.ui_attractiveness"
+    },
+    {
+      "placeholder": "terminology",
+      "jsonPath": "formData.quality_metrics.terminology"
+    },
+    {
+      "placeholder": "ui_customization",
+      "jsonPath": "formData.quality_metrics.ui_customization"
+    },
+    {
+      "placeholder": "workflow_match",
+      "jsonPath": "formData.quality_metrics.workflow_match"
+    },
+    {
+      "placeholder": "operation_speed",
+      "jsonPath": "formData.quality_metrics.operation_speed"
+    },
+    {
+      "placeholder": "resource_usage",
+      "jsonPath": "formData.quality_metrics.resource_usage"
+    },
+    {
+      "placeholder": "user_impact",
+      "jsonPath": "formData.quality_metrics.user_impact"
+    },
+    {
+      "placeholder": "scalability",
+      "jsonPath": "formData.quality_metrics.scalability"
+    },
+    {
+      "placeholder": "quality_metrics_description",
+      "jsonPath": "formData.quality_metrics_description"
+    },
+    {
+      "placeholder": "improvement_details",
+      "jsonPath": "formData.improvement_details"
+    },
+    {
+      "placeholder": "improvement_details_description",
+      "jsonPath": "formData.improvement_details_description"
+    },
+    {
+      "placeholder": "interviewer_notes",
+      "jsonPath": "formData.interviewer_notes"
+    },
+    {
+      "placeholder": "interviewer_notes_description",
+      "jsonPath": "formData.interviewer_notes_description"
+    }
+  ]
+}

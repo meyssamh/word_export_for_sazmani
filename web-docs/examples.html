@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples - Word Export Module</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="index.html">Word Export Module</a></h1>
+                <span class="version">v1.0.0</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="api.html" class="nav-link">API</a></li>
+                <li><a href="examples.html" class="nav-link active">Examples</a></li>
+                <li><a href="guide.html" class="nav-link">Guide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <aside class="sidebar">
+                <nav class="doc-nav">
+                    <h3>Examples</h3>
+                    <ul>
+                        <li><a href="#basic-usage">Basic Usage</a></li>
+                        <li><a href="#single-export">Single Export</a></li>
+                        <li><a href="#batch-export">Batch Export</a></li>
+                        <li><a href="#multilingual">Multilingual Documents</a></li>
+                        <li><a href="#custom-fonts">Custom Fonts</a></li>
+                        <li><a href="#data-transformation">Data Transformation</a></li>
+                        <li><a href="#error-handling">Error Handling</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="content">
+                <h1>Examples</h1>
+                <p>Learn how to use the Word Export Module with these practical examples.</p>
+
+                <section id="basic-usage" class="example-section">
+                    <h2>Basic Usage</h2>
+                    <p>Simple document generation from complex JSON data structures commonly found in enterprise systems.</p>
+                    
+                    <div class="code-example">
+                        <h3>Complete Example - Tax Management System</h3>
+                        <pre><code>import { WordExportModule } from './word-export-module/src';
+import * as path from 'path';
+import * as fs from 'fs/promises';
+
+async function generateTaxSystemDocument() {
+    // Initialize the module with proper paths
+    const wordExportModule = new WordExportModule({
+        templatePath: path.resolve('./templates/Form_corrected.docx'),
+        mappingPath: path.resolve('./config/mapping.json'),
+        outputPath: path.resolve('./output/document.docx')
+    });
+
+    // Configure fonts for Persian-English mixed content
+    wordExportModule.setFonts({
+        persian: 'B Nazanin',      // Persian text
+        english: 'Times New Roman', // English text
+        default: 'Arial'           // Fallback
+    });
+
+    // Complex real-world data structure
+    const taxSystemData = {
+        "_id": "67d557c3669b83f9b9374b06",
+        "formData": {
+            // Basic system identification
+            "system_title": "سیستم مدیریت مالیات بر درآمد اشخاص حقیقی",
+            "system_type": "specialized",
+            "systemUrls": [{ "url": "tax.ir/personal-income" }],
+            
+            // System ownership structure
+            "system_owner": [{
+                "department": {
+                    "name": "معاونت درآمدهای مالیاتی",
+                    "createdAt": "2025-02-01T13:30:32.657Z"
+                },
+                "name": "مدیر کل سیستم‌های مالیاتی",
+                "mobile": "021-12345678"
+            }],
+            
+            // Core functionality
+            "mainFunctions": [
+                { "name": "مدیریت اظهارنامه‌های مالیاتی اشخاص حقیقی" },
+                { "name": "محاسبه مالیات بر درآمد" },
+                { "name": "صدور برگ تشخیص" },
+                { "name": "مدیریت معافیت‌ها و تخفیفات" }
+            ],
+            
+            // Business services
+            "supportedBusinessServices": [
+                { "serviceId": { "title": "ثبت اظهارنامه مالیاتی" } },
+                { "serviceId": { "title": "پرداخت مالیات آنلاین" } },
+                { "serviceId": { "title": "استعلام بدهی مالیاتی" } }
+            ],
+            
+            // Technical specifications
+            "technology": {
+                "programming_languages": "Java 17, TypeScript, Python",
+                "database": "PostgreSQL 14.2 with Redis Cache",
+                "operating_system": "Ubuntu 20.04 LTS",
+                "frameworks": "Spring Boot 2.7, Angular 14, FastAPI"
+            },
+            
+            // User domains with detailed metrics
+            "user_domains": {
+                "headquarters": {
+                    "unit_name": "ستاد سازمان امور مالیاتی",
+                    "estimated_users": 150,
+                    "time_limit": "۲۴ ساعته",
+                    "peak_time": "۸ تا ۱۴",
+                    "used_features": ["گزارش‌گیری", "نظارت", "تحلیل آماری"]
+                },
+                "tax_offices": {
+                    "unit_name": "ادارات مالیاتی سراسر کشور",
+                    "estimated_users": 5000,
+                    "time_limit": "۸ تا ۱۶",
+                    "peak_time": "۹ تا ۱۲",
+                    "used_features": ["ثبت اظهارنامه", "رسیدگی", "تشخیص"]
+                },
+                "taxpayers": {
+                    "unit_name": "مؤدیان مالیاتی",
+                    "estimated_users": 2000000,
+                    "time_limit": "۲۴ ساعته (آنلاین)",
+                    "peak_time": "۱۹ تا ۲۳",
+                    "used_features": ["ثبت اظهارنامه", "پرداخت", "استعلام"]
+                }
+            },
+            
+            // Quality and compliance metrics
+            "quality_metrics": {
+                "requirements_coverage": true,
+                "change_time": "کمتر از ۴۸ ساعت",
+                "error_free": true,
+                "data_encryption": true,
+                "access_control": true,
+                "ui_consistency": true,
+                "operation_speed": "excellent",
+                "scalability": true
+            }
+        }
+    };
+
+    try {
+        // Generate document with automatic filename from system_title
+        const outputPath = await wordExportModule.exportSingle(taxSystemData, './exports');
+        console.log(`✅ Document generated successfully: ${outputPath}`);
+        
+        // Document will be saved as: './exports/سیستم_مدیریت_مالیات_بر_درآمد_اشخاص_حقیقی.docx'
+        
+        return outputPath;
+    } catch (error) {
+        console.error('❌ Generation failed:', error.message);
+        throw error;
+    }
+}
+
+// Execute the example
+generateTaxSystemDocument();</code></pre>
+                    </div>
+
+                    <div class="note">
+                        <h4>💡 Key Features Demonstrated</h4>
+                        <ul>
+                            <li><strong>Automatic Language Detection:</strong> Persian and English text automatically use appropriate fonts</li>
+                            <li><strong>Complex Data Mapping:</strong> Nested objects and arrays are properly handled</li>
+                            <li><strong>Persian Filename Generation:</strong> Output filename created from system_title field</li>
+                            <li><strong>Font Configuration:</strong> Separate fonts for Persian (B Nazanin) and English (Times New Roman)</li>
+                            <li><strong>Real-world Data:</strong> Handles complex government/enterprise data structures</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="single-export" class="example-section">
+                    <h2>Single Document Export</h2>
+                    <p>Export a single document with automatic filename generation.</p>
+                    
+                    <div class="code-example">
+                        <pre><code>import { WordExportModule } from './word-export-module/src';
+
+const module = new WordExportModule({
+    templatePath: './templates/template.docx',
+    mappingPath: './config/mapping.json',
+    outputPath: './temp.docx'
+});
+
+const jsonData = {
+    formData: {
+        system_title: 'سیستم حسابداری',
+        system_type: [{ specialized: true }],
+        system_description: 'سیستم مدیریت حسابداری شرکت'
+    }
+};
+
+// Export with auto-generated filename based on system_title
+const outputPath = await module.exportSingle(jsonData, './exports');
+console.log(`Document saved: ${outputPath}`);
+// Output: ./exports/سیستم_حسابداری.docx</code></pre>
+                    </div>
+
+                    <div class="note">
+                        <h4>💡 Note</h4>
+                        <p>The filename is automatically generated from the <code>system_title</code> field, replacing spaces with underscores and adding the .docx extension.</p>
+                    </div>
+                </section>
+
+                <section id="batch-export" class="example-section">
+                    <h2>Batch Export to ZIP</h2>
+                    <p>Process multiple complex documents and create a ZIP file with Persian filenames and automatic organization.</p>
+                    
+                    <div class="code-example">
+                        <h3>Real-world Batch Processing Example</h3>
+                        <pre><code>import { WordExportModule } from './word-export-module/src';
+import * as fs from 'fs/promises';
+import * as path from 'path';
+
+async function processTaxSystemsBatch() {
+    // Initialize module
+    const module = new WordExportModule({
+        templatePath: path.resolve('./templates/Form_corrected.docx'),
+        mappingPath: path.resolve('./config/mapping.json'),
+        outputPath: path.resolve('./temp.docx') // Not used for batch
+    });
+
+    // Set enterprise-grade fonts
+    module.setFonts({
+        persian: 'B Nazanin',
+        english: 'Times New Roman',
+        default: 'Arial'
+    });
+
+    // Load real systems data (typically from database or API)
+    const systemsArray = [
+        {
+            formData: {
+                system_title: 'سیستم مدیریت مالیات بر درآمد اشخاص حقیقی',
+                system_type: 'specialized',
+                system_owner: [{ 
+                    name: 'مدیر کل مالیات بر درآمد',
+                    department: { name: 'معاونت درآمدهای مالیاتی' }
+                }],
+                technology: {
+                    programming_languages: 'Java, TypeScript',
+                    database: 'PostgreSQL',
+                    operating_system: 'Ubuntu 20.04'
+                },
+                user_domains: {
+                    taxpayers: {
+                        estimated_users: 2000000,
+                        peak_time: '۱۹ تا ۲۳'
+                    }
+                }
+            }
+        },
+        {
+            formData: {
+                system_title: 'سیستم مدیریت مالیات بر ارزش افزوده',
+                system_type: 'specialized',
+                system_owner: [{ 
+                    name: 'مدیر کل مالیات بر ارزش افزوده',
+                    department: { name: 'معاونت درآمدهای مالیاتی' }
+                }],
+                technology: {
+                    programming_languages: 'C#, Angular',
+                    database: 'SQL Server',
+                    operating_system: 'Windows Server 2019'
+                },
+                user_domains: {
+                    businesses: {
+                        estimated_users: 500000,
+                        peak_time: '۱۰ تا ۱۴'
+                    }
+                }
+            }
+        },
+        {
+            formData: {
+                system_title: 'سیستم مدیریت مالیات املاک',
+                system_type: 'specialized',
+                system_owner: [{ 
+                    name: 'مدیر کل مالیات املاک',
+                    department: { name: 'معاونت درآمدهای مالیاتی' }
+                }],
+                technology: {
+                    programming_languages: 'Python, React',
+                    database: 'MongoDB',
+                    operating_system: 'CentOS 8'
+                },
+                user_domains: {
+                    tax_offices: {
+                        estimated_users: 1200,
+                        peak_time: '۸ تا ۱۲'
+                    }
+                }
+            }
+        }
+    ];
+
+    console.log(`🚀 Starting batch processing of ${systemsArray.length} tax systems...`);
+    
+    try {
+        const startTime = Date.now();
+        
+        // Process all systems and create ZIP
+        const zipPath = await module.exportBatch(
+            systemsArray,
+            './exports',
+            'سیستم‌های_مدیریت_مالیاتی_۱۴۰۳.zip' // Persian ZIP filename
+        );
+        
+        const endTime = Date.now();
+        const processingTime = ((endTime - startTime) / 1000).toFixed(2);
+        
+        console.log(`🎉 Batch processing completed successfully!`);
+        console.log(`📦 ZIP file: ${zipPath}`);
+        console.log(`📄 Documents generated: ${systemsArray.length}`);
+        console.log(`⏱️  Processing time: ${processingTime} seconds`);
+        console.log(`📋 Individual documents:`);
+        
+        // Each document will have Persian filename:
+        systemsArray.forEach((system, index) => {
+            const filename = system.formData.system_title.replace(/\s+/g, '_') + '.docx';
+            console.log(`   ${index + 1}. ${filename}`);
+        });
+        
+        return zipPath;
+        
+    } catch (error) {
+        console.error('❌ Batch processing failed:', error.message);
+        
+        // Enhanced error handling
+        if (error.message.includes('template')) {
+            console.error('🔧 Check template file path and permissions');
+        } else if (error.message.includes('mapping')) {
+            console.error('📋 Verify mapping configuration file');
+        } else if (error.message.includes('font')) {
+            console.error('🔤 Ensure Persian fonts are installed');
+        }
+        
+        throw error;
+    }
+}
+
+// Advanced batch processing with progress tracking
+async function batchWithProgress() {
+    // ... module setup ...
+    
+    const batchSize = 5; // Process 5 at a time
+    const totalSystems = systemsArray.length;
+    
+    for (let i = 0; i < totalSystems; i += batchSize) {
+        const batch = systemsArray.slice(i, i + batchSize);
+        const batchNum = Math.floor(i / batchSize) + 1;
+        const totalBatches = Math.ceil(totalSystems / batchSize);
+        
+        console.log(`📦 Processing batch ${batchNum}/${totalBatches} (${batch.length} systems)...`);
+        
+        await module.exportBatch(batch, './exports', `batch_${batchNum}.zip`);
+        
+        console.log(`✅ Batch ${batchNum} completed`);
+    }
+}
+
+// Execute examples
+processTaxSystemsBatch();</code></pre>
+                    </div>
+
+                    <div class="feature-highlight">
+                        <h4>🚀 Advanced Batch Features</h4>
+                        <div class="batch-features">
+                            <div class="feature-item">
+                                <h5>📱 Persian Filename Support</h5>
+                                <p>ZIP files and individual documents support Persian characters in filenames</p>
+                            </div>
+                            <div class="feature-item">
+                                <h5>⚡ Automatic Organization</h5>
+                                <p>Each document automatically named based on system_title field</p>
+                            </div>
+                            <div class="feature-item">
+                                <h5>🔧 Robust Error Handling</h5>
+                                <p>Continues processing if individual documents fail, with detailed error reporting</p>
+                            </div>
+                            <div class="feature-item">
+                                <h5>📊 Progress Tracking</h5>
+                                <p>Built-in logging shows processing progress and timing information</p>
+                            </div>
+                            <div class="feature-item">
+                                <h5>🗜️ Efficient ZIP Creation</h5>
+                                <p>Uses JSZip for memory-efficient ZIP file creation with compression</p>
+                            </div>
+                            <div class="feature-item">
+                                <h5>🧹 Automatic Cleanup</h5>
+                                <p>Temporary files are automatically cleaned up after ZIP creation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="performance-note">
+                        <h4>⚡ Performance Considerations</h4>
+                        <ul>
+                            <li><strong>Batch Size:</strong> Process 5-10 documents per batch for optimal memory usage</li>
+                            <li><strong>Memory Usage:</strong> ~50MB per document during processing</li>
+                            <li><strong>Processing Time:</strong> ~2-3 seconds per document on average hardware</li>
+                            <li><strong>Large Batches:</strong> For 100+ documents, consider processing in chunks</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="multilingual" class="example-section">
+                    <h2>Multilingual Documents</h2>
+                    <p>Handle mixed Persian and English content with proper font styling.</p>
+                    
+                    <div class="code-example">
+                        <pre><code>const multilingualData = {
+    formData: {
+        system_title: 'Tax Management System - سیستم مدیریت مالیات',
+        persian_description: 'این سیستم برای مدیریت امور مالیاتی ایران طراحی شده است',
+        english_description: 'This system is designed for managing Iranian tax affairs',
+        technical_specs: {
+            programming_language: 'Java, TypeScript',
+            database: 'PostgreSQL',
+            architecture: 'Microservices - معماری میکروسرویس'
+        },
+        contact_info: {
+            phone: '۰۲۱-۱۲۳۴۵۶۷۸',
+            email: 'info@tax-system.ir',
+            address: 'تهران، خیابان ولیعصر، پلاک ۱۰۰'
+        }
+    }
+};
+
+// The module automatically detects language and applies appropriate fonts
+module.setFonts({
+    persian: 'IRANSans',
+    english: 'Calibri',
+    default: 'Arial'
+});
+
+await module.generateDocument(multilingualData);</code></pre>
+                    </div>
+
+                    <div class="feature-highlight">
+                        <h4>Automatic Language Detection</h4>
+                        <ul>
+                            <li>Persian text uses Persian fonts (IRANSans, B Nazanin, etc.)</li>
+                            <li>English text uses English fonts (Calibri, Times New Roman, etc.)</li>
+                            <li>Numbers are automatically converted to Persian digits</li>
+                            <li>RTL (Right-to-Left) text direction is properly handled</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="custom-fonts" class="example-section">
+                    <h2>Custom Font Configuration</h2>
+                    <p>Configure fonts for different text types and languages.</p>
+                    
+                    <div class="code-example">
+                        <pre><code>// Standard font configuration
+module.setFonts({
+    persian: 'B Nazanin',      // For Persian text
+    english: 'Times New Roman', // For English text
+    default: 'Arial'           // Fallback font
+});
+
+// Alternative Persian fonts
+module.setFonts({
+    persian: 'IRANSans',
+    english: 'Calibri',
+    default: 'Tahoma'
+});
+
+// For official documents
+module.setFonts({
+    persian: 'B Titr',
+    english: 'Times New Roman',
+    default: 'B Nazanin'
+});
+
+// Generate document with custom fonts
+await module.generateDocument(data);</code></pre>
+                    </div>
+
+                    <div class="font-recommendations">
+                        <h4>Recommended Persian Fonts</h4>
+                        <ul>
+                            <li><strong>B Nazanin</strong> - Classic, readable</li>
+                            <li><strong>IRANSans</strong> - Modern, clean</li>
+                            <li><strong>B Titr</strong> - Formal documents</li>
+                            <li><strong>Tahoma</strong> - Good fallback option</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="data-transformation" class="example-section">
+                    <h2>Data Transformation</h2>
+                    <p>Use mapping configurations to transform complex JSON structures.</p>
+                    
+                    <div class="code-example">
+                        <h3>Raw Input Data</h3>
+                        <pre><code>const rawData = {
+    "system": {
+        "name": "مدیریت مالیات",
+        "type": "specialized",
+        "users": [
+            { "name": "احمد محمدی", "role": "admin" },
+            { "name": "فاطمه احمدی", "role": "user" }
+        ]
+    },
+    "metadata": {
+        "created": "2024-01-15",
+        "version": "1.2.0"
+    }
+};</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Mapping Configuration (mapping.json)</h3>
+                        <pre><code>{
+    "mappings": [
+        {
+            "placeholder": "system_title",
+            "jsonPath": "system.name"
+        },
+        {
+            "placeholder": "system_type",
+            "jsonPath": "system.type"
+        },
+        {
+            "placeholder": "user_list",
+            "jsonPath": "system.users"
+        },
+        {
+            "placeholder": "creation_date",
+            "jsonPath": "metadata.created"
+        }
+    ]
+}</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Usage</h3>
+                        <pre><code>// The module automatically transforms data using the mapping
+const outputPath = await module.generateDocument(rawData);
+
+// Or transform data separately
+const transformedData = await module.transformData(rawData);
+console.log(transformedData);
+// Output: {
+//     system_title: "مدیریت مالیات",
+//     system_type: "specialized",
+//     user_list: [...],
+//     creation_date: "2024-01-15"
+// }</code></pre>
+                    </div>
+                </section>
+
+                <section id="error-handling" class="example-section">
+                    <h2>Error Handling</h2>
+                    <p>Proper error handling for robust applications.</p>
+                    
+                    <div class="code-example">
+                        <pre><code>import { WordExportModule } from './word-export-module/src';
+
+async function generateDocumentSafely(data: any) {
+    const module = new WordExportModule({
+        templatePath: './templates/form.docx',
+        mappingPath: './config/mapping.json',
+        outputPath: './output/document.docx'
+    });
+
+    try {
+        // Validate required files exist
+        if (!fs.existsSync('./templates/form.docx')) {
+            throw new Error('Template file not found');
+        }
+
+        if (!fs.existsSync('./config/mapping.json')) {
+            throw new Error('Mapping configuration not found');
+        }
+
+        // Generate document
+        const outputPath = await module.generateDocument(data);
+        console.log(`✅ Document generated successfully: ${outputPath}`);
+        return outputPath;
+
+    } catch (error) {
+        console.error('❌ Document generation failed:', error.message);
+        
+        // Handle specific error types
+        if (error.message.includes('Template')) {
+            console.error('📄 Check template file path and format');
+        } else if (error.message.includes('Mapping')) {
+            console.error('🗺️  Check mapping configuration file');
+        } else if (error.message.includes('Font')) {
+            console.error('🔤 Check if fonts are installed on the system');
+        }
+        
+        throw error;
+    }
+}
+
+// Usage
+try {
+    await generateDocumentSafely(jsonData);
+} catch (error) {
+    // Handle error at application level
+    console.error('Application error:', error.message);
+}</code></pre>
+                    </div>
+
+                    <div class="error-types">
+                        <h4>Common Error Types</h4>
+                        <div class="error-grid">
+                            <div class="error-item">
+                                <h5>Template Errors</h5>
+                                <ul>
+                                    <li>File not found</li>
+                                    <li>Invalid DOCX format</li>
+                                    <li>Missing placeholders</li>
+                                </ul>
+                            </div>
+                            <div class="error-item">
+                                <h5>Data Errors</h5>
+                                <ul>
+                                    <li>Invalid JSON structure</li>
+                                    <li>Missing required fields</li>
+                                    <li>Type conversion issues</li>
+                                </ul>
+                            </div>
+                            <div class="error-item">
+                                <h5>Font Errors</h5>
+                                <ul>
+                                    <li>Font not installed</li>
+                                    <li>Character encoding issues</li>
+                                    <li>RTL display problems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="running-examples" class="example-section">
+                    <h2>Running the Included Examples</h2>
+                    <p>The module includes comprehensive working examples with real tax system data in the <code>examples/</code> directory.</p>
+                    
+                    <div class="code-example">
+                        <h3>Quick Start - Run All Examples</h3>
+                        <pre><code># Navigate to the word-export-module directory
+cd /path/to/word-export-module
+
+# Install dependencies and build
+npm install
+npm run build
+
+# Run all examples (recommended first try)
+npx ts-node examples/run-examples.ts
+
+# Expected output:
+# --- Single Export Example ---
+# Loading single system data...
+# Starting single export...
+# ✅ Single export completed successfully!
+# 📄 Document generated: ./examples/output/test.docx
+#
+# --- Batch Export Example ---
+# 📄 Loading batch systems data...
+# Found 10 systems to process
+# ✅ Processing 8 valid systems (2 empty entries skipped)
+# 🚀 Starting batch export to ZIP (this will take about 30 seconds)...
+# Processing document 1/8...
+# Processing document 2/8...
+# ...
+# 🎉 Batch export completed successfully!
+# 📦 ZIP file created: ./examples/output/مدیریت_مالیات.zip</code></pre>
+                    </div>
+
+                    <div class="code-example">
+                        <h3>Run Individual Examples</h3>
+                        <pre><code># Single document export only
+npx ts-node examples/single-export-example.ts
+
+# Batch export only
+npx ts-node examples/batch-export-example.ts
+
+# Run with additional parameters
+npx ts-node examples/run-examples.ts single  # Single only
+npx ts-node examples/run-examples.ts batch   # Batch only
+
+# Debug mode with detailed logging
+DEBUG=word-export-module:* npx ts-node examples/run-examples.ts</code></pre>
+                    </div>
+
+                    <div class="example-files">
+                        <h4>📁 Example Directory Structure</h4>
+                        <div class="file-tree">
+                            <pre><code>examples/
+├── README.md                           # Example documentation
+├── run-examples.ts                     # Main runner script
+├── single-export-example.ts            # Single document export
+├── batch-export-example.ts            # Batch export demo
+├── working-batch-test.ts              # Advanced batch testing
+├── simple-batch-test.js               # JavaScript version
+├── data/                              # Sample data files
+│   ├── test.json                     # Single system data
+│   ├── maliati.systems.json          # Multiple systems data
+│   ├── active_directory.json         # Active Directory system
+│   ├── bahremoadian.json             # Tax collection system
+│   ├── hagigi.json                   # Individual tax system
+│   ├── mis.json                      # Management info system
+│   ├── vosool.json                   # Revenue collection
+│   └── yekparche.json                # Integrated system
+└── output/                           # Generated documents
+    ├── test.docx                     # Single export result
+    ├── مدیریت_مالیات.zip             # Batch export ZIP
+    ├── full_batch_test.zip           # Full batch test
+    └── temp_transformed.json         # Debug transformation data</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="example-data">
+                        <h4>📊 Sample Data Overview</h4>
+                        <div class="data-grid">
+                            <div class="data-item">
+                                <h5>test.json</h5>
+                                <p><strong>Size:</strong> ~600 lines<br>
+                                <strong>Use:</strong> Single document testing<br>
+                                <strong>System:</strong> Generic tax management system</p>
+                            </div>
+                            <div class="data-item">
+                                <h5>maliati.systems.json</h5>
+                                <p><strong>Size:</strong> Array of 10 systems<br>
+                                <strong>Use:</strong> Batch processing demo<br>
+                                <strong>Systems:</strong> Various tax management modules</p>
+                            </div>
+                            <div class="data-item">
+                                <h5>Individual System Files</h5>
+                                <p><strong>Count:</strong> 8 specialized systems<br>
+                                <strong>Use:</strong> Real-world data examples<br>
+                                <strong>Complexity:</strong> Full enterprise structure</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="troubleshooting-examples">
+                        <h4>🔧 Troubleshooting Examples</h4>
+                        <div class="trouble-item">
+                            <h5>❌ "Template file not found"</h5>
+                            <div class="solution">
+                                <p><strong>Cause:</strong> Missing template file</p>
+                                <p><strong>Solution:</strong></p>
+                                <pre><code># Verify template exists
+ls -la templates/Form_corrected.docx
+
+# If missing, check if it's in a different location
+find . -name "*.docx" -type f</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="trouble-item">
+                            <h5>❌ "Cannot read property of undefined"</h5>
+                            <div class="solution">
+                                <p><strong>Cause:</strong> Data structure mismatch</p>
+                                <p><strong>Solution:</strong></p>
+                                <pre><code># Check data structure
+node -e "console.log(JSON.stringify(require('./examples/data/test.json'), null, 2))"
+
+# Verify mapping configuration
+cat config/mapping.json | jq '.mappings[0:5]'</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="trouble-item">
+                            <h5>❌ Persian text displays as boxes</h5>
+                            <div class="solution">
+                                <p><strong>Cause:</strong> Missing Persian fonts</p>
+                                <p><strong>Solution:</strong></p>
+                                <pre><code># Ubuntu/Debian
+sudo apt-get install fonts-farsiweb
+
+# Or install manually
+fc-list | grep -i nazanin  # Check if B Nazanin is installed</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expected-results">
+                        <h4>✅ Expected Results</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <h5>Single Export</h5>
+                                <ul>
+                                    <li>Generated file: <code>examples/output/test.docx</code></li>
+                                    <li>Size: ~500KB (with embedded fonts)</li>
+                                    <li>Content: Properly formatted Persian-English mixed text</li>
+                                    <li>Processing time: ~2-3 seconds</li>
+                                </ul>
+                            </div>
+                            <div class="result-item">
+                                <h5>Batch Export</h5>
+                                <ul>
+                                    <li>Generated ZIP: <code>examples/output/مدیریت_مالیات.zip</code></li>
+                                    <li>Contains: 8 individual DOCX files</li>
+                                    <li>Size: ~3-4MB total</li>
+                                    <li>Processing time: ~20-30 seconds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Word Export Module. Released under the MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Export Module - TypeScript Document Generator</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>Word Export Module</h1>
+                <span class="version">v1.0.0</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#installation" class="nav-link">Installation</a></li>
+                <li><a href="#usage" class="nav-link">Usage</a></li>
+                <li><a href="api.html" class="nav-link">API</a></li>
+                <li><a href="examples.html" class="nav-link">Examples</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Generate Word Documents from JSON</h1>
+                    <p class="hero-subtitle">
+                        A comprehensive TypeScript module for generating professional Word documents from complex JSON data structures, specifically designed for tax management systems with advanced multilingual support for Persian and English.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#installation" class="btn btn-primary">Get Started</a>
+                        <a href="https://github.com/yourusername/word-export-module" class="btn btn-secondary">GitHub</a>
+                    </div>
+                </div>
+                <div class="hero-code">
+                    <pre><code>import { WordExportModule } from './word-export-module/src';
+
+const module = new WordExportModule({
+    templatePath: './templates/Form_corrected.docx',
+    mappingPath: './config/mapping.json',
+    outputPath: './output/document.docx'
+});
+
+// Set fonts for Persian and English
+module.setFonts({
+    persian: 'B Nazanin',
+    english: 'Times New Roman'
+});
+
+// Export single document
+const docPath = await module.exportSingle(jsonData, './exports');
+
+// Export multiple documents as ZIP
+const zipPath = await module.exportBatch(dataArray, './exports', 'systems.zip');</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Single & Batch Export</h3>
+                        <p>Export individual documents or process multiple documents in batches with automatic ZIP compression and Persian filename support.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Advanced Multilingual</h3>
+                        <p>Sophisticated support for Persian and English with automatic language detection, RTL handling, and Persian digit conversion.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Smart Font Management</h3>
+                        <p>Intelligent font assignment based on content language with support for B Nazanin, IRANSans, and other Persian fonts.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Complex Data Mapping</h3>
+                        <p>Advanced JSON data transformation using configurable mapping files supporting nested objects, arrays, and JSONPath syntax.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>TypeScript First</h3>
+                        <p>Fully typed with comprehensive interfaces, IntelliSense support, and modern ES modules architecture.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Enterprise Ready</h3>
+                        <p>Production-tested with tax management systems, comprehensive error handling, and built-in data cleaning utilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="installation">
+            <div class="container">
+                <h2>Installation</h2>
+                <div class="install-steps">
+                    <div class="step">
+                        <h3>1. Copy Module to Your Project</h3>
+                        <pre><code># Copy the entire module directory
+cp -r /path/to/word-export-module ./src/word-export-module
+
+# Or use npm (if published)
+npm install word-export-module</code></pre>
+                    </div>
+                    <div class="step">
+                        <h3>2. Install Dependencies</h3>
+                        <pre><code>cd src/word-export-module
+npm install
+
+# Key dependencies installed:
+# - docxtemplater: ^3.65.2 (DOCX processing)
+# - pizzip: ^3.2.0 (ZIP archive handling)
+# - jszip: ^3.10.1 (ZIP file creation)
+# - lodash: ^4.17.21 (Utility functions)</code></pre>
+                    </div>
+                    <div class="step">
+                        <h3>3. Build Module</h3>
+                        <pre><code>npm run build
+
+# This compiles TypeScript and copies assets:
+# - Compiles src/ to dist/
+# - Copies config/, templates/, uploads/ to dist/
+# - Generates type definitions</code></pre>
+                    </div>
+                    <div class="step">
+                        <h3>4. Set Up Persian Fonts (Important!)</h3>
+                        <pre><code># Linux (Ubuntu/Debian)
+sudo apt-get install fonts-farsiweb
+
+# Or manually install Persian fonts:
+# - B Nazanin, IRANSans, B Titr
+# - Place .ttf files in system fonts directory</code></pre>
+                    </div>
+                </div>
+                <div class="requirements">
+                    <h3>System Requirements</h3>
+                    <ul>
+                        <li><strong>Node.js:</strong> 14.0 or higher</li>
+                        <li><strong>npm:</strong> 6.0 or higher</li>
+                        <li><strong>TypeScript:</strong> 4.0 or higher (for TS projects)</li>
+                        <li><strong>Persian Fonts:</strong> B Nazanin, IRANSans recommended</li>
+                        <li><strong>Memory:</strong> 512MB RAM for processing large batches</li>
+                    </ul>
+                    
+                    <h3>Supported Platforms</h3>
+                    <ul>
+                        <li>✅ Linux (Ubuntu, CentOS, RHEL)</li>
+                        <li>✅ Windows 10/11</li>
+                        <li>✅ macOS 10.15+</li>
+                        <li>✅ Docker containers</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="usage" class="usage">
+            <div class="container">
+                <h2>Quick Start</h2>
+                <div class="usage-example">
+                    <h3>Basic Usage - Single Document</h3>
+                    <pre><code>import { WordExportModule } from './word-export-module/src';
+import * as path from 'path';
+
+// Initialize the module
+const wordExportModule = new WordExportModule({
+    templatePath: path.resolve('./templates/Form_corrected.docx'),
+    mappingPath: path.resolve('./config/mapping.json'),
+    outputPath: path.resolve('./output/document.docx')
+});
+
+// Configure fonts for multilingual support
+wordExportModule.setFonts({
+    persian: 'B Nazanin',      // For Persian text
+    english: 'Times New Roman', // For English text  
+    default: 'Arial'           // Fallback font
+});
+
+// Example JSON data (tax management system)
+const systemData = {
+    formData: {
+        system_title: 'سیستم مدیریت مالیات',
+        system_type: 'specialized',
+        system_owner: [{
+            name: 'مدیر سیستم مالیاتی',
+            department: { name: 'معاونت درآمدهای مالیاتی' }
+        }],
+        mainFunctions: [
+            { name: 'مدیریت اظهارنامه‌های مالیاتی' },
+            { name: 'محاسبه مالیات بر درآمد' }
+        ],
+        technology: {
+            programming_languages: 'Java, TypeScript',
+            database: 'PostgreSQL',
+            operating_system: 'Linux Ubuntu 20.04'
+        }
+    }
+};
+
+// Export single document (filename auto-generated from system_title)
+const documentPath = await wordExportModule.exportSingle(systemData, './exports');
+console.log(`Document generated: ${documentPath}`);
+// Output: ./exports/سیستم_مدیریت_مالیات.docx</code></pre>
+
+                    <h3>Batch Processing - Multiple Documents</h3>
+                    <pre><code>// Load multiple system data
+const systemsArray = [
+    { formData: { system_title: 'سیستم مدیریت مالیات', /* ... */ } },
+    { formData: { system_title: 'سیستم حسابداری', /* ... */ } },
+    { formData: { system_title: 'سیستم گزارش‌گیری', /* ... */ } }
+];
+
+// Export all systems to a ZIP file
+const zipPath = await wordExportModule.exportBatch(
+    systemsArray,
+    './exports',           // Output directory
+    'مدیریت_مالیات.zip'    // ZIP filename (Persian supported!)
+);
+
+console.log(`Batch export completed: ${zipPath}`);
+console.log(`Generated ${systemsArray.length} Word documents`);
+
+// Advanced batch processing with progress tracking
+for (let i = 0; i < systemsArray.length; i++) {
+    console.log(`Processing system ${i + 1}/${systemsArray.length}...`);
+    // Each document automatically named based on system_title
+}</code></pre>
+                </div>
+                <div class="next-steps">
+                    <h3>What's Included</h3>
+                    <div class="features-overview">
+                        <div class="feature-item">
+                            <h4>🏗️ Complete Module Architecture</h4>
+                            <p>Modular TypeScript codebase with utilities for font styling, language detection, data transformation, and document processing.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>📋 Working Examples</h4>
+                            <p>Ready-to-run examples in <code>examples/</code> directory with real tax system data and comprehensive documentation.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🎯 Pre-configured Templates</h4>
+                            <p>Professional DOCX template (<code>Form_corrected.docx</code>) designed for government and tax management systems.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>⚙️ Advanced Data Mapping</h4>
+                            <p>Comprehensive mapping configuration supporting 200+ data fields with JSONPath syntax for complex transformations.</p>
+                        </div>
+                    </div>
+
+                    <h3>Next Steps</h3>
+                    <div class="steps-grid">
+                        <a href="api.html" class="step-card">
+                            <h4>API Reference</h4>
+                            <p>Complete method documentation with TypeScript definitions and usage examples</p>
+                        </a>
+                        <a href="examples.html" class="step-card">
+                            <h4>Detailed Examples</h4>
+                            <p>Working code examples including batch processing, error handling, and multilingual documents</p>
+                        </a>
+                        <a href="guide.html" class="step-card">
+                            <h4>Configuration Guide</h4>
+                            <p>Template creation, data mapping setup, font configuration, and deployment best practices</p>
+                        </a>
+                    </div>
+
+                    <h3>Quick Demo</h3>
+                    <div class="demo-section">
+                        <p>Try the module with included examples:</p>
+                        <pre><code># From the word-export-module directory
+npm run build
+
+# Run single document export example
+npx ts-node examples/single-export-example.ts
+
+# Run batch export example (creates ZIP with multiple documents)
+npx ts-node examples/batch-export-example.ts
+
+# Or run all examples
+npx ts-node examples/run-examples.ts</code></pre>
+                        <p><strong>Expected Output:</strong> Generated Word documents in <code>examples/output/</code> with Persian filenames and proper font styling.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Word Export Module</h3>
+                    <p>Production-ready TypeScript module for generating professional Word documents from complex JSON data with comprehensive multilingual support and advanced data transformation capabilities.</p>
+                    <div class="version-info">
+                        <p><strong>Version:</strong> 1.0.0 | <strong>License:</strong> MIT | <strong>Node.js:</strong> 14+</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="api.html">API Reference</a></li>
+                        <li><a href="examples.html">Examples</a></li>
+                        <li><a href="guide.html">User Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/yourusername/word-export-module">GitHub</a></li>
+                        <li><a href="https://github.com/yourusername/word-export-module/issues">Issues</a></li>
+                        <li><a href="https://github.com/yourusername/word-export-module/discussions">Discussions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Word Export Module. Released under the MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

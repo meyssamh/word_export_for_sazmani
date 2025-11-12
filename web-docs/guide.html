@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide - Word Export Module</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="index.html">Word Export Module</a></h1>
+                <span class="version">v1.0.0</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="api.html" class="nav-link">API</a></li>
+                <li><a href="examples.html" class="nav-link">Examples</a></li>
+                <li><a href="guide.html" class="nav-link active">Guide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <aside class="sidebar">
+                <nav class="doc-nav">
+                    <h3>User Guide</h3>
+                    <ul>
+                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#project-structure">Project Structure</a></li>
+                        <li><a href="#templates">Creating Templates</a></li>
+                        <li><a href="#mapping">Data Mapping</a></li>
+                        <li><a href="#fonts">Font Management</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="content">
+                <h1>User Guide</h1>
+                <p>Comprehensive guide to using the Word Export Module effectively.</p>
+
+                <section id="getting-started" class="guide-section">
+                    <h2>Getting Started</h2>
+                    <p>This guide will help you integrate and use the Word Export Module in your project.</p>
+
+                    <h3>Installation Steps</h3>
+                    <ol>
+                        <li><strong>Copy the Module</strong>
+                            <pre><code>cp -r /path/to/word-export-module ./src/word-export-module</code></pre>
+                        </li>
+                        <li><strong>Install Dependencies</strong>
+                            <pre><code>cd src/word-export-module && npm install</code></pre>
+                        </li>
+                        <li><strong>Build the Module</strong>
+                            <pre><code>npm run build</code></pre>
+                        </li>
+                    </ol>
+
+                    <h3>System Requirements</h3>
+                    <ul>
+                        <li>Node.js 14.0 or higher</li>
+                        <li>npm 6.0 or higher</li>
+                        <li>TypeScript 4.0+ (for TypeScript projects)</li>
+                        <li>Persian fonts installed on the system (B Nazanin, IRANSans, etc.)</li>
+                    </ul>
+
+                    <h3>Dependencies Overview</h3>
+                    <div class="dependency-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Purpose</th>
+                                    <th>Version</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>docxtemplater</td>
+                                    <td>DOCX template processing</td>
+                                    <td>^3.65.2</td>
+                                </tr>
+                                <tr>
+                                    <td>pizzip</td>
+                                    <td>ZIP archive manipulation</td>
+                                    <td>^3.2.0</td>
+                                </tr>
+                                <tr>
+                                    <td>jszip</td>
+                                    <td>ZIP file creation</td>
+                                    <td>^3.10.1</td>
+                                </tr>
+                                <tr>
+                                    <td>lodash</td>
+                                    <td>Utility functions</td>
+                                    <td>^4.17.21</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="project-structure" class="guide-section">
+                    <h2>Project Structure</h2>
+                    <p>Understanding the module's directory structure and organization for effective integration and customization.</p>
+
+                    <div class="file-tree">
+                        <pre><code>word-export-module/
+├── 📁 src/                          # TypeScript source code
+│   ├── index.ts                     # Main module exports
+│   ├── types/
+│   │   ├── document.ts              # Document-related type definitions
+│   │   └── dataTransformer.ts       # Data transformation types
+│   └── utils/                       # Core utility modules
+│       ├── dataTransformer.ts       # JSON data transformation logic
+│       ├── document-generator.ts    # DOCX document generation
+│       ├── font-styler.ts           # Language-aware font styling
+│       └── language-processor.ts    # Persian/English text processing
+├── 📁 config/                       # Configuration files
+│   └── mapping.json                 # 200+ field mapping configuration
+├── 📁 templates/                    # DOCX template files
+│   └── Form_corrected.docx          # Professional tax form template
+├── 📁 examples/                     # Working examples and demos
+│   ├── README.md                    # Examples documentation
+│   ├── run-examples.ts              # Main example runner
+│   ├── single-export-example.ts     # Single document demo
+│   ├── batch-export-example.ts      # Batch processing demo
+│   ├── working-batch-test.ts        # Advanced batch testing
+│   ├── 📁 data/                     # Real-world sample data
+│   │   ├── test.json               # Single system (600+ lines)
+│   │   ├── maliati.systems.json    # Multiple systems array
+│   │   ├── active_directory.json   # AD integration system
+│   │   ├── bahremoadian.json       # Tax collection system
+│   │   ├── hagigi.json             # Individual tax system
+│   │   ├── mis.json                # Management information
+│   │   ├── pardakhte-maliate-saham.json # Stock tax payment
+│   │   ├── vosool.json             # Revenue collection
+│   │   └── yekparche.json          # Integrated tax system
+│   └── 📁 output/                  # Generated documents
+│       ├── test.docx               # Single export result
+│       ├── مدیریت_مالیات.zip       # Batch export (Persian name)
+│       └── temp_transformed.json   # Debug transformation data
+├── 📁 exports/                     # Production export outputs
+│   ├── real_data_export.zip        # Real system exports
+│   ├── systems_export.zip          # System collection
+│   └── مدیریت_مالیات.docx          # Individual Persian document
+├── 📁 web-docs/                    # Documentation website
+│   ├── index.html                  # Main documentation
+│   ├── api.html                    # API reference
+│   ├── examples.html               # Usage examples
+│   ├── guide.html                  # Configuration guide
+│   └── 📁 assets/                  # Documentation assets
+├── 📄 package.json                 # NPM configuration & dependencies
+├── 📄 tsconfig.json                # TypeScript configuration
+├── 📄 jest.config.js               # Test configuration
+└── 📄 README.md                    # Project documentation</code></pre>
+                    </div>
+
+                    <h3>Key Components Explained</h3>
+                    <div class="component-descriptions">
+                        <div class="component-item">
+                            <h4>🔧 <code>src/utils/</code> - Core Processing Modules</h4>
+                            <ul>
+                                <li><strong>dataTransformer.ts:</strong> Transforms complex JSON using mapping rules, handles nested objects and arrays</li>
+                                <li><strong>document-generator.ts:</strong> Generates DOCX files using docxtemplater with custom font handling</li>
+                                <li><strong>font-styler.ts:</strong> Applies language-specific fonts to text based on Persian/English detection</li>
+                                <li><strong>language-processor.ts:</strong> Detects text language, converts Persian digits, handles RTL text</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="component-item">
+                            <h4>⚙️ <code>config/mapping.json</code> - Data Transformation Rules</h4>
+                            <ul>
+                                <li><strong>200+ Field Mappings:</strong> Complete mapping for tax management system data</li>
+                                <li><strong>JSONPath Support:</strong> Complex path expressions like <code>formData.user_domains.taxpayers.estimated_users</code></li>
+                                <li><strong>Array Handling:</strong> Support for arrays and nested objects with <code>[]</code> syntax</li>
+                                <li><strong>Real-world Tested:</strong> Mappings tested with actual government tax system data</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="component-item">
+                            <h4>📄 <code>templates/Form_corrected.docx</code> - Professional Template</h4>
+                            <ul>
+                                <li><strong>Government Standard:</strong> Designed for official tax management documentation</li>
+                                <li><strong>200+ Placeholders:</strong> Comprehensive template with all mapped fields</li>
+                                <li><strong>Persian Layout:</strong> Proper RTL support and Persian typography</li>
+                                <li><strong>Professional Formatting:</strong> Tables, sections, and consistent styling</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="component-item">
+                            <h4>🧪 <code>examples/</code> - Production-Ready Examples</h4>
+                            <ul>
+                                <li><strong>Real Data:</strong> Actual tax system data structures from government systems</li>
+                                <li><strong>Complete Workflows:</strong> Single export, batch processing, error handling</li>
+                                <li><strong>Performance Testing:</strong> Examples include timing and memory usage monitoring</li>
+                                <li><strong>Multiple Systems:</strong> 10+ different tax management system examples</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Dependencies Architecture</h3>
+                    <div class="dependencies-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Version</th>
+                                    <th>Purpose</th>
+                                    <th>Critical</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>docxtemplater</strong></td>
+                                    <td>^3.65.2</td>
+                                    <td>DOCX template processing and placeholder replacement</td>
+                                    <td>✅ Core</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>pizzip</strong></td>
+                                    <td>^3.2.0</td>
+                                    <td>ZIP archive manipulation for DOCX files</td>
+                                    <td>✅ Core</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>jszip</strong></td>
+                                    <td>^3.10.1</td>
+                                    <td>ZIP file creation for batch exports</td>
+                                    <td>✅ Core</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>lodash</strong></td>
+                                    <td>^4.17.21</td>
+                                    <td>Utility functions for data manipulation</td>
+                                    <td>⚡ Performance</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>typescript</strong></td>
+                                    <td>^4.0.0</td>
+                                    <td>Type definitions and compilation</td>
+                                    <td>🔧 Development</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>jest</strong></td>
+                                    <td>^30.0.5</td>
+                                    <td>Unit testing framework</td>
+                                    <td>🧪 Testing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="templates" class="guide-section">
+                    <h2>Creating Templates</h2>
+                    <p>Learn how to create and customize DOCX templates for document generation.</p>
+
+                    <h3>Template Basics</h3>
+                    <p>Templates are standard DOCX files with special placeholders that get replaced with your data.</p>
+
+                    <h3>Placeholder Syntax</h3>
+                    <div class="placeholder-examples">
+                        <h4>Simple Placeholders</h4>
+                        <pre><code>{{system_title}}          # Simple text replacement
+{{creation_date}}         # Date fields
+{{system_description}}    # Multi-line text</code></pre>
+
+                        <h4>Array/Loop Placeholders</h4>
+                        <pre><code>{#system_users}
+Name: {{name}}
+Role: {{role}}
+{/system_users}</code></pre>
+
+                        <h4>Conditional Placeholders</h4>
+                        <pre><code>{#system_active}
+System Status: Active
+{/system_active}
+
+{^system_active}
+System Status: Inactive
+{/system_active}</code></pre>
+                    </div>
+
+                    <h3>Template Creation Workflow</h3>
+                    <ol>
+                        <li><strong>Create Base Document</strong>
+                            <p>Start with a regular Word document with your desired layout and formatting.</p>
+                        </li>
+                        <li><strong>Add Placeholders</strong>
+                            <p>Replace static content with placeholders using the <code>{{field_name}}</code> syntax.</p>
+                        </li>
+                        <li><strong>Format Text</strong>
+                            <p>Apply appropriate fonts and formatting to placeholder text.</p>
+                        </li>
+                        <li><strong>Test Template</strong>
+                            <p>Use the module to generate a test document and verify formatting.</p>
+                        </li>
+                    </ol>
+
+                    <h3>Font Considerations</h3>
+                    <div class="font-tips">
+                        <h4>Persian Text</h4>
+                        <ul>
+                            <li>Use Persian-compatible fonts (B Nazanin, IRANSans)</li>
+                            <li>Set text direction to RTL for Persian paragraphs</li>
+                            <li>Consider line spacing for Persian text readability</li>
+                        </ul>
+
+                        <h4>Mixed Content</h4>
+                        <ul>
+                            <li>The module automatically handles font assignment</li>
+                            <li>Placeholders inherit formatting from template</li>
+                            <li>Override fonts programmatically if needed</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="mapping" class="guide-section">
+                    <h2>Data Mapping</h2>
+                    <p>Configure how your JSON data maps to template placeholders.</p>
+
+                    <h3>Mapping Configuration File</h3>
+                    <p>The <code>mapping.json</code> file defines how raw JSON data transforms into template data.</p>
+
+                    <div class="code-example">
+                        <h4>Basic Mapping Structure</h4>
+                        <pre><code>{
+    "mappings": [
+        {
+            "placeholder": "system_title",
+            "jsonPath": "formData.system.name"
+        },
+        {
+            "placeholder": "creation_date",
+            "jsonPath": "metadata.created_at"
+        },
+        {
+            "placeholder": "system_users",
+            "jsonPath": "formData.users"
+        }
+    ]
+}</code></pre>
+                    </div>
+
+                    <h3>JSON Path Syntax</h3>
+                    <div class="jsonpath-examples">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>JSON Path</th>
+                                    <th>Description</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>system.name</code></td>
+                                    <td>Simple nested property</td>
+                                    <td><code>{ system: { name: "value" } }</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>users[0].name</code></td>
+                                    <td>Array element property</td>
+                                    <td><code>{ users: [{ name: "John" }] }</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code>metadata.tags</code></td>
+                                    <td>Array property</td>
+                                    <td><code>{ metadata: { tags: ["tag1", "tag2"] } }</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Complex Mapping Example</h3>
+                    <div class="code-example">
+                        <h4>Input JSON</h4>
+                        <pre><code>{
+    "formData": {
+        "system": {
+            "name": "مدیریت مالیات",
+            "type": "specialized"
+        },
+        "users": [
+            { "name": "احمد محمدی", "role": "مدیر" },
+            { "name": "فاطمه احمدی", "role": "کاربر" }
+        ],
+        "features": ["reporting", "analytics", "export"]
+    },
+    "metadata": {
+        "created": "1403/05/13",
+        "version": "2.1.0"
+    }
+}</code></pre>
+
+                        <h4>Mapping Configuration</h4>
+                        <pre><code>{
+    "mappings": [
+        {
+            "placeholder": "system_title",
+            "jsonPath": "formData.system.name"
+        },
+        {
+            "placeholder": "system_type",
+            "jsonPath": "formData.system.type"
+        },
+        {
+            "placeholder": "system_users",
+            "jsonPath": "formData.users"
+        },
+        {
+            "placeholder": "available_features",
+            "jsonPath": "formData.features"
+        },
+        {
+            "placeholder": "creation_date",
+            "jsonPath": "metadata.created"
+        },
+        {
+            "placeholder": "system_version",
+            "jsonPath": "metadata.version"
+        }
+    ]
+}</code></pre>
+
+                        <h4>Resulting Template Data</h4>
+                        <pre><code>{
+    "system_title": "مدیریت مالیات",
+    "system_type": "specialized",
+    "system_users": [
+        { "name": "احمد محمدی", "role": "مدیر" },
+        { "name": "فاطمه احمدی", "role": "کاربر" }
+    ],
+    "available_features": ["reporting", "analytics", "export"],
+    "creation_date": "1403/05/13",
+    "system_version": "2.1.0"
+}</code></pre>
+                    </div>
+                </section>
+
+                <section id="fonts" class="guide-section">
+                    <h2>Font Management</h2>
+                    <p>Configure and manage fonts for different languages and text types.</p>
+
+                    <h3>Font Configuration</h3>
+                    <p>The module supports automatic font assignment based on language detection.</p>
+
+                    <div class="code-example">
+                        <pre><code>// Basic font configuration
+module.setFonts({
+    persian: 'B Nazanin',      // For Persian text
+    english: 'Times New Roman', // For English text
+    default: 'Arial'           // Fallback font
+});
+
+// Advanced configuration
+module.setFonts({
+    persian: 'IRANSans',
+    english: 'Calibri',
+    default: 'Tahoma',
+    systemTitleFirst: 'B Titr'  // Special font for titles
+});</code></pre>
+                    </div>
+
+                    <h3>Language Detection</h3>
+                    <p>The module automatically detects text language and applies appropriate fonts:</p>
+                    <ul>
+                        <li><strong>Persian Detection:</strong> Unicode range U+0600–U+06FF (Arabic block)</li>
+                        <li><strong>English Detection:</strong> Latin characters and numbers</li>
+                        <li><strong>Mixed Content:</strong> Applies fonts based on character analysis</li>
+                    </ul>
+
+                    <h3>Font Installation</h3>
+                    <div class="installation-tips">
+                        <h4>Windows</h4>
+                        <ol>
+                            <li>Download Persian font files (.ttf or .otf)</li>
+                            <li>Right-click font file and select "Install"</li>
+                            <li>Restart applications to use new fonts</li>
+                        </ol>
+
+                        <h4>Linux</h4>
+                        <pre><code># Install Persian fonts
+sudo apt-get install fonts-farsiweb
+
+# Or manually install fonts
+sudo cp font-file.ttf /usr/share/fonts/truetype/
+sudo fc-cache -f -v</code></pre>
+
+                        <h4>macOS</h4>
+                        <ol>
+                            <li>Double-click font file</li>
+                            <li>Click "Install Font" in Font Book</li>
+                            <li>Font becomes available system-wide</li>
+                        </ol>
+                    </div>
+
+                    <h3>Recommended Fonts</h3>
+                    <div class="font-recommendations">
+                        <div class="font-category">
+                            <h4>Persian Fonts</h4>
+                            <ul>
+                                <li><strong>B Nazanin</strong> - Classic, widely compatible</li>
+                                <li><strong>IRANSans</strong> - Modern, clean appearance</li>
+                                <li><strong>B Titr</strong> - Good for headings and titles</li>
+                                <li><strong>Tahoma</strong> - Good fallback option</li>
+                            </ul>
+                        </div>
+                        <div class="font-category">
+                            <h4>English Fonts</h4>
+                            <ul>
+                                <li><strong>Times New Roman</strong> - Professional documents</li>
+                                <li><strong>Calibri</strong> - Modern, readable</li>
+                                <li><strong>Arial</strong> - Universal compatibility</li>
+                                <li><strong>Georgia</strong> - Good for longer texts</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="best-practices" class="guide-section">
+                    <h2>Best Practices</h2>
+                    <p>Guidelines for effective use of the Word Export Module.</p>
+
+                    <h3>Template Design</h3>
+                    <div class="best-practice">
+                        <h4>✅ Do</h4>
+                        <ul>
+                            <li>Use consistent placeholder naming conventions</li>
+                            <li>Apply appropriate formatting to placeholder text</li>
+                            <li>Test templates with real data before production</li>
+                            <li>Use descriptive placeholder names (<code>{{system_title}}</code> not <code>{{field1}}</code>)</li>
+                            <li>Include fallback content for optional fields</li>
+                        </ul>
+
+                        <h4>❌ Don't</h4>
+                        <ul>
+                            <li>Use special characters in placeholder names</li>
+                            <li>Nest complex formatting inside placeholders</li>
+                            <li>Rely on manual formatting for different languages</li>
+                            <li>Create overly complex nested structures</li>
+                        </ul>
+                    </div>
+
+                    <h3>Data Structure</h3>
+                    <div class="best-practice">
+                        <h4>✅ Recommended Structure</h4>
+                        <pre><code>{
+    "formData": {
+        "system_title": "نام سیستم",
+        "system_description": "توضیحات سیستم",
+        "users": [
+            { "name": "نام کاربر", "role": "نقش" }
+        ]
+    },
+    "metadata": {
+        "created_date": "1403/05/13",
+        "version": "1.0.0"
+    }
+}</code></pre>
+
+                        <h4>❌ Avoid Complex Nesting</h4>
+                        <pre><code>{
+    "data": {
+        "system": {
+            "info": {
+                "details": {
+                    "name": "buried too deep"
+                }
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+
+                    <h3>Performance Optimization</h3>
+                    <ul>
+                        <li><strong>Batch Processing:</strong> Use batch export for multiple documents</li>
+                        <li><strong>Template Reuse:</strong> Design reusable templates for similar documents</li>
+                        <li><strong>Data Validation:</strong> Validate data before processing</li>
+                        <li><strong>Error Handling:</strong> Implement comprehensive error handling</li>
+                    </ul>
+
+                    <h3>File Organization</h3>
+                    <div class="code-example">
+                        <pre><code>your-project/
+├── src/
+│   ├── word-export-module/     # Copied module
+│   └── your-app/
+│       ├── services/
+│       │   └── document-service.ts
+│       └── controllers/
+│           └── export-controller.ts
+├── config/
+│   ├── mapping-tax.json        # Tax system mapping
+│   ├── mapping-hr.json         # HR system mapping
+│   └── fonts.json              # Font configuration
+├── templates/
+│   ├── tax-form.docx
+│   ├── hr-report.docx
+│   └── general-report.docx
+└── exports/
+    ├── single/                 # Single document exports
+    └── batches/                # Batch exports (ZIP files)</code></pre>
+                    </div>
+                </section>
+
+                <section id="troubleshooting" class="guide-section">
+                    <h2>Troubleshooting</h2>
+                    <p>Common issues and their solutions.</p>
+
+                    <h3>Template Issues</h3>
+                    <div class="troubleshooting-item">
+                        <h4>❌ Problem: Template not found</h4>
+                        <div class="solution">
+                            <h5>✅ Solution:</h5>
+                            <ul>
+                                <li>Check file path is correct and absolute</li>
+                                <li>Ensure template file exists and is readable</li>
+                                <li>Verify file extension is .docx</li>
+                            </ul>
+                            <pre><code>// Use absolute paths
+const templatePath = path.resolve('./templates/form.docx');
+console.log('Template exists:', fs.existsSync(templatePath));</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="troubleshooting-item">
+                        <h4>❌ Problem: Placeholders not replaced</h4>
+                        <div class="solution">
+                            <h5>✅ Solution:</h5>
+                            <ul>
+                                <li>Check placeholder syntax: <code>{{field_name}}</code></li>
+                                <li>Verify mapping configuration matches data structure</li>
+                                <li>Ensure JSON paths are correct</li>
+                            </ul>
+                            <pre><code>// Debug mapping
+console.log('Transformed data:', await module.transformData(rawData));</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>Font Issues</h3>
+                    <div class="troubleshooting-item">
+                        <h4>❌ Problem: Persian text displays incorrectly</h4>
+                        <div class="solution">
+                            <h5>✅ Solution:</h5>
+                            <ul>
+                                <li>Install Persian fonts on the system</li>
+                                <li>Check font names in configuration</li>
+                                <li>Verify character encoding (UTF-8)</li>
+                            </ul>
+                            <pre><code>// Test font availability
+module.setFonts({
+    persian: 'Arial', // Fallback test
+    english: 'Arial',
+    default: 'Arial'
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>Data Issues</h3>
+                    <div class="troubleshooting-item">
+                        <h4>❌ Problem: Type conversion errors</h4>
+                        <div class="solution">
+                            <h5>✅ Solution:</h5>
+                            <ul>
+                                <li>Validate data types before processing</li>
+                                <li>Handle null/undefined values</li>
+                                <li>Convert data to expected formats</li>
+                            </ul>
+                            <pre><code>// Data validation
+function validateData(data: any): boolean {
+    return data && 
+           typeof data.formData === 'object' &&
+           typeof data.formData.system_title === 'string';
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>Performance Issues</h3>
+                    <div class="troubleshooting-item">
+                        <h4>❌ Problem: Slow batch processing</h4>
+                        <div class="solution">
+                            <h5>✅ Solution:</h5>
+                            <ul>
+                                <li>Process documents in smaller batches</li>
+                                <li>Use streaming for large datasets</li>
+                                <li>Implement progress tracking</li>
+                            </ul>
+                            <pre><code>// Process in chunks
+const chunkSize = 10;
+for (let i = 0; i < dataArray.length; i += chunkSize) {
+    const chunk = dataArray.slice(i, i + chunkSize);
+    await module.exportBatch(chunk, './output', `batch_${i}.zip`);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>Getting Help</h3>
+                    <div class="help-resources">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><strong>GitHub Issues:</strong> Report bugs and request features</li>
+                            <li><strong>Examples Directory:</strong> Working code examples</li>
+                            <li><strong>API Documentation:</strong> Complete method reference</li>
+                            <li><strong>TypeScript Definitions:</strong> Type information and IntelliSense</li>
+                        </ul>
+
+                        <h4>Debug Mode</h4>
+                        <pre><code>// Enable detailed logging
+process.env.DEBUG = 'word-export-module:*';
+
+// Or add console.log statements
+console.log('Processing data:', JSON.stringify(data, null, 2));</code></pre>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Word Export Module. Released under the MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

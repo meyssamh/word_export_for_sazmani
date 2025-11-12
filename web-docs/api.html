@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - Word Export Module</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="index.html">Word Export Module</a></h1>
+                <span class="version">v1.0.0</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="api.html" class="nav-link active">API</a></li>
+                <li><a href="examples.html" class="nav-link">Examples</a></li>
+                <li><a href="guide.html" class="nav-link">Guide</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="documentation">
+        <div class="container">
+            <aside class="sidebar">
+                <nav class="doc-nav">
+                    <h3>API Reference</h3>
+                    <ul>
+                        <li><a href="#wordexportmodule">WordExportModule</a></li>
+                        <li><a href="#documentgenerator">DocumentGenerator</a></li>
+                        <li><a href="#datatransformer">DataTransformer</a></li>
+                        <li><a href="#utilities">Utility Functions</a></li>
+                        <li><a href="#types">Type Definitions</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="content">
+                <h1>API Reference</h1>
+
+                <section id="wordexportmodule" class="api-section">
+                    <h2>WordExportModule</h2>
+                    <p>The main class that provides high-level document generation functionality with advanced multilingual support and batch processing capabilities.</p>
+
+                    <div class="method">
+                        <h3>Constructor</h3>
+                        <div class="method-signature">
+                            <code>new WordExportModule(config: WordExportConfig)</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Creates a new WordExportModule instance with template and mapping configuration.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>config.templatePath</code> - Absolute path to the DOCX template file (e.g., Form_corrected.docx)</li>
+                                <li><code>config.mappingPath</code> - Absolute path to the JSON mapping configuration file</li>
+                                <li><code>config.outputPath</code> - Default output path (used for temporary operations)</li>
+                                <li><code>config.transformerOutputPath</code> (optional) - Path for saving transformed JSON data</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>import { WordExportModule } from './word-export-module/src';
+import * as path from 'path';
+
+const module = new WordExportModule({
+    templatePath: path.resolve('./templates/Form_corrected.docx'),
+    mappingPath: path.resolve('./config/mapping.json'),
+    outputPath: path.resolve('./output/temp.docx'),
+    transformerOutputPath: path.resolve('./output/transformed.json')
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>setFonts()</h3>
+                        <div class="method-signature">
+                            <code>setFonts(fontConfig: FontConfig): void</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Configure fonts for different languages and text types with automatic language detection.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>fontConfig.persian</code> - Font for Persian/Farsi text (e.g., 'B Nazanin', 'IRANSans')</li>
+                                <li><code>fontConfig.english</code> - Font for English text (e.g., 'Times New Roman', 'Calibri')</li>
+                                <li><code>fontConfig.default</code> - Default fallback font (e.g., 'Arial')</li>
+                                <li><code>fontConfig.systemTitleFirst</code> (optional) - Special font for system titles</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>// Standard configuration for Persian documents
+module.setFonts({
+    persian: 'B Nazanin',        // Persian text
+    english: 'Times New Roman',  // English text
+    default: 'Arial'             // Fallback
+});
+
+// Alternative with modern fonts
+module.setFonts({
+    persian: 'IRANSans',
+    english: 'Calibri',
+    default: 'Tahoma',
+    systemTitleFirst: 'B Titr'   // For headings
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>exportSingle()</h3>
+                        <div class="method-signature">
+                            <code>async exportSingle(jsonData: any, outputDir?: string): Promise&lt;string&gt;</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Export a single JSON object to a Word document with automatic filename generation based on system_title field.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>jsonData</code> - Complex JSON data object (typically with formData structure)</li>
+                                <li><code>outputDir</code> (optional) - Output directory path (default: same as configured output path)</li>
+                            </ul>
+                            <h4>Returns</h4>
+                            <p>Promise that resolves to the absolute path of the generated Word document.</p>
+                            <h4>Features</h4>
+                            <ul>
+                                <li>Automatic filename generation from <code>system_title</code> field</li>
+                                <li>Persian filename support</li>
+                                <li>Data transformation using mapping configuration</li>
+                                <li>Automatic language detection and font application</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>const systemData = {
+    formData: {
+        system_title: 'سیستم مدیریت مالیات',
+        system_type: 'specialized',
+        system_owner: [{ name: 'مدیر سیستم' }],
+        // ... more complex nested data
+    }
+};
+
+const docPath = await module.exportSingle(systemData, './exports');
+console.log(docPath); 
+// Output: './exports/سیستم_مدیریت_مالیات.docx'</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>exportBatch()</h3>
+                        <div class="method-signature">
+                            <code>async exportBatch(jsonDataArray: any[], outputDir?: string, zipFilename?: string): Promise&lt;string&gt;</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Export multiple JSON objects to Word documents and package them in a ZIP file with Persian filename support.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>jsonDataArray</code> - Array of JSON data objects (must be non-empty)</li>
+                                <li><code>outputDir</code> (optional) - Output directory for the ZIP file</li>
+                                <li><code>zipFilename</code> (optional) - Custom ZIP filename (supports Persian characters)</li>
+                            </ul>
+                            <h4>Returns</h4>
+                            <p>Promise that resolves to the absolute path of the generated ZIP file.</p>
+                            <h4>Features</h4>
+                            <ul>
+                                <li>Individual documents named by system_title</li>
+                                <li>Automatic temporary file cleanup</li>
+                                <li>Persian ZIP filename support</li>
+                                <li>Progress logging for large batches</li>
+                                <li>Error handling with partial completion support</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>const systemsArray = [
+    { formData: { system_title: 'سیستم مدیریت مالیات', /* ... */ } },
+    { formData: { system_title: 'سیستم حسابداری', /* ... */ } },
+    { formData: { system_title: 'سیستم گزارش‌گیری', /* ... */ } }
+];
+
+const zipPath = await module.exportBatch(
+    systemsArray,
+    './exports',
+    'مدیریت_مالیات.zip'  // Persian filename supported
+);
+
+console.log(`Generated ZIP: ${zipPath}`);
+console.log(`Contains ${systemsArray.length} Word documents`);
+// Each document named: سیستم_مدیریت_مالیات.docx, etc.</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>generateDocument()</h3>
+                        <div class="method-signature">
+                            <code>async generateDocument(rawData: any): Promise&lt;void&gt;</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Transform raw JSON data and generate a Word document using the configured output path.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>rawData</code> - Raw JSON data to be transformed and inserted into template</li>
+                            </ul>
+                            <h4>Note</h4>
+                            <p>This method uses the outputPath specified in the constructor. For more flexible output management, use <code>exportSingle()</code> or <code>exportBatch()</code>.</p>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>transformData()</h3>
+                        <div class="method-signature">
+                            <code>async transformData(rawData: any): Promise&lt;any&gt;</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Transform raw JSON data using the mapping configuration without generating a document.</p>
+                            <h4>Returns</h4>
+                            <p>Promise that resolves to the transformed data object ready for template insertion.</p>
+                            <h4>Use Cases</h4>
+                            <ul>
+                                <li>Data validation and preview</li>
+                                <li>Debugging transformation logic</li>
+                                <li>Custom document generation workflows</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>// Preview transformed data before generation
+const transformedData = await module.transformData(rawSystemData);
+console.log('Preview:', JSON.stringify(transformedData, null, 2));
+
+// Use with custom generator
+await customGenerator.generate(transformedData);</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="documentgenerator" class="api-section">
+                    <h2>DocumentGenerator</h2>
+                    <p>Low-level class for generating Word documents from transformed data.</p>
+
+                    <div class="method">
+                        <h3>Constructor</h3>
+                        <div class="method-signature">
+                            <code>new DocumentGenerator(config: DocumentGeneratorConfig)</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Creates a new DocumentGenerator instance.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>config.templatePath</code> - Path to the DOCX template</li>
+                                <li><code>config.outputPath</code> - Output path for the generated document</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>generate()</h3>
+                        <div class="method-signature">
+                            <code>async generate(data: TemplateData): Promise&lt;string&gt;</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Generate a Word document from template data.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="datatransformer" class="api-section">
+                    <h2>DataTransformer</h2>
+                    <p>Class for transforming raw JSON data using mapping configurations.</p>
+
+                    <div class="method">
+                        <h3>Constructor</h3>
+                        <div class="method-signature">
+                            <code>new DataTransformer(mappingPath: string, options?: DataTransformerOptions)</code>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>transformDataForDocxtemplater()</h3>
+                        <div class="method-signature">
+                            <code>async transformDataForDocxtemplater(rawData: any, additionalProcessing: string[]): Promise&lt;TemplateData&gt;</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Transform raw data according to mapping configuration.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="utilities" class="api-section">
+                    <h2>Utility Functions</h2>
+                    <p>Standalone utility functions available for custom implementations and advanced usage.</p>
+
+                    <div class="method">
+                        <h3>wrapDataWithLanguageMarkers()</h3>
+                        <div class="method-signature">
+                            <code>wrapDataWithLanguageMarkers(data: TemplateData): TemplateData</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Wrap text data with language markers for font styling. This function automatically detects Persian and English text and adds appropriate markers.</p>
+                            <h4>Features</h4>
+                            <ul>
+                                <li>Automatic language detection for each text field</li>
+                                <li>Supports mixed Persian-English content</li>
+                                <li>Preserves original data structure</li>
+                                <li>Handles nested objects and arrays</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>import { wrapDataWithLanguageMarkers } from './word-export-module/src';
+
+const data = {
+    persian_title: 'سیستم مدیریت مالیات',
+    english_title: 'Tax Management System',
+    mixed_content: 'System نام: Tax Management'
+};
+
+const wrappedData = wrapDataWithLanguageMarkers(data);
+// Results in data with language markers for font styling</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>applyFontStyles()</h3>
+                        <div class="method-signature">
+                            <code>applyFontStyles(xmlContent: string, fontConfig: FontConfig): string</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Apply font styles to XML content based on language markers. This is used internally to apply different fonts to Persian and English text.</p>
+                            <h4>Parameters</h4>
+                            <ul>
+                                <li><code>xmlContent</code> - DOCX XML content with language markers</li>
+                                <li><code>fontConfig</code> - Font configuration object</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>import { applyFontStyles, FontConfig } from './word-export-module/src';
+
+const fonts: FontConfig = {
+    persian: 'B Nazanin',
+    english: 'Calibri',
+    default: 'Arial'
+};
+
+const styledXml = applyFontStyles(xmlWithMarkers, fonts);</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>convertToPersianDigits()</h3>
+                        <div class="method-signature">
+                            <code>convertToPersianDigits(text: string): string</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Convert English digits (0-9) to Persian digits (۰-۹) for proper Persian text formatting.</p>
+                            <h4>Conversion Table</h4>
+                            <ul>
+                                <li>0 → ۰, 1 → ۱, 2 → ۲, 3 → ۳, 4 → ۴</li>
+                                <li>5 → ۵, 6 → ۶, 7 → ۷, 8 → ۸, 9 → ۹</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>import { convertToPersianDigits } from './word-export-module/src';
+
+const persianNumbers = convertToPersianDigits('1234567890');
+console.log(persianNumbers); // '۱۲۳۴۵۶۷۸۹۰'
+
+const mixedText = convertToPersianDigits('تاریخ: 2024/01/15');
+console.log(mixedText); // 'تاریخ: ۲۰۲۴/۰۱/۱۵'</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>isPurelyNumerical()</h3>
+                        <div class="method-signature">
+                            <code>isPurelyNumerical(text: string): boolean</code>
+                        </div>
+                        <div class="method-description">
+                            <p>Check if a text string contains only numerical characters and basic punctuation.</p>
+                            <h4>Use Cases</h4>
+                            <ul>
+                                <li>Determine if text should be treated as numeric data</li>
+                                <li>Apply different formatting to pure numbers</li>
+                                <li>Validation for numeric fields</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>import { isPurelyNumerical } from './word-export-module/src';
+
+console.log(isPurelyNumerical('123456')); // true
+console.log(isPurelyNumerical('123.45')); // true
+console.log(isPurelyNumerical('123abc')); // false
+console.log(isPurelyNumerical('۱۲۳۴')); // true (Persian digits)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="method">
+                        <h3>Language Detection Utilities</h3>
+                        <div class="method-description">
+                            <p>The module includes advanced language detection capabilities:</p>
+                            <h4>Persian Text Detection</h4>
+                            <ul>
+                                <li>Unicode range U+0600–U+06FF (Arabic/Persian script)</li>
+                                <li>Persian-specific characters like ی، ک، گ</li>
+                                <li>Persian digits ۰-۹</li>
+                                <li>Persian punctuation marks</li>
+                            </ul>
+                            <h4>English Text Detection</h4>
+                            <ul>
+                                <li>Latin alphabet (A-Z, a-z)</li>
+                                <li>English digits (0-9)</li>
+                                <li>Common English punctuation</li>
+                            </ul>
+                            <h4>Mixed Content Handling</h4>
+                            <ul>
+                                <li>Automatic detection of mixed Persian-English text</li>
+                                <li>Smart font application for each part</li>
+                                <li>Preservation of text structure and formatting</li>
+                            </ul>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>// Example of mixed content handling
+const mixedText = 'System مدیریت with ID: 12345';
+// Persian parts: 'مدیریت' gets Persian font
+// English parts: 'System', 'with ID:', '12345' get English font</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="types" class="api-section">
+                    <h2>Type Definitions</h2>
+                    <p>Complete TypeScript interface definitions for type-safe development.</p>
+
+                    <div class="type-definition">
+                        <h3>WordExportConfig</h3>
+                        <div class="method-description">
+                            <p>Configuration object for initializing WordExportModule.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>interface WordExportConfig {
+    /** Absolute path to the DOCX template file */
+    templatePath: string;
+    
+    /** Absolute path to the JSON mapping configuration */
+    mappingPath: string;
+    
+    /** Default output path for generated documents */
+    outputPath: string;
+    
+    /** Optional path for saving transformed JSON data */
+    transformerOutputPath?: string;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="type-definition">
+                        <h3>FontConfig</h3>
+                        <div class="method-description">
+                            <p>Font configuration for multilingual text rendering.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>interface FontConfig {
+    /** Font for Persian/Farsi text (e.g., 'B Nazanin', 'IRANSans') */
+    persian: string;
+    
+    /** Font for English text (e.g., 'Times New Roman', 'Calibri') */
+    english: string;
+    
+    /** Default fallback font (e.g., 'Arial') */
+    default: string;
+    
+    /** Optional special font for system titles */
+    systemTitleFirst?: string;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="type-definition">
+                        <h3>DocumentGeneratorConfig</h3>
+                        <div class="method-description">
+                            <p>Configuration for low-level document generation.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>interface DocumentGeneratorConfig {
+    /** Path to the DOCX template file */
+    templatePath: string;
+    
+    /** Output path for the generated document */
+    outputPath: string;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="type-definition">
+                        <h3>TemplateData</h3>
+                        <div class="method-description">
+                            <p>Flexible data structure for template insertion after transformation.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>type TemplateData = Record&lt;string, any&gt;;
+
+// Example structure after transformation:
+interface ExampleTemplateData extends TemplateData {
+    system_title: string;
+    system_type: string;
+    system_owner: string;
+    mainFunctions: Array&lt;{ name: string }&gt;;
+    technology: {
+        programming_languages: string;
+        database: string;
+        operating_system: string;
+    };
+    // ... 200+ more fields based on mapping configuration
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="type-definition">
+                        <h3>DataTransformerOptions</h3>
+                        <div class="method-description">
+                            <p>Options for data transformation behavior.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>interface DataTransformerOptions {
+    /** Path for saving transformed data output */
+    outputPath?: string;
+    
+    /** Enable debug logging during transformation */
+    debug?: boolean;
+    
+    /** Custom transformation functions */
+    customTransforms?: Record&lt;string, (value: any) =&gt; any&gt;;
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="type-definition">
+                        <h3>MappingConfiguration</h3>
+                        <div class="method-description">
+                            <p>Structure of the mapping.json configuration file.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>interface MappingConfiguration {
+    mappings: Array&lt;{
+        /** Template placeholder name (without {{ }}) */
+        placeholder: string;
+        
+        /** JSONPath expression to extract data */
+        jsonPath: string;
+        
+        /** Optional data transformation type */
+        transform?: 'array' | 'string' | 'number' | 'boolean';
+        
+        /** Optional default value if data not found */
+        defaultValue?: any;
+    }&gt;;
+}
+
+// Example mapping entry:
+{
+    "placeholder": "system_title",
+    "jsonPath": "formData.system_title"
+}
+
+// Advanced mapping with array handling:
+{
+    "placeholder": "supported_services", 
+    "jsonPath": "formData.supportedBusinessServices[].serviceId.title"
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="type-definition">
+                        <h3>Complex Data Structures</h3>
+                        <div class="method-description">
+                            <p>Examples of complex JSON structures supported by the module.</p>
+                        </div>
+                        <div class="code-example">
+                            <pre><code>// Tax Management System Data Structure
+interface TaxSystemData {
+    _id: string;
+    formData: {
+        // Basic system information
+        system_title: string;
+        system_type: 'specialized' | 'general' | 'out-of-scope';
+        systemUrls: Array&lt;{ url: string }&gt;;
+        
+        // System ownership and responsibility
+        system_owner: Array&lt;{
+            department: {
+                _id: string;
+                name: string;
+                createdAt: string;
+                updatedAt: string;
+            };
+            name: string;
+            mobile: string;
+        }&gt;;
+        
+        // Form completion information
+        form_completer: Array&lt;{
+            name: {
+                _id: string;
+                firstname: string;
+                lastname: string;
+                username: string;
+                isAdmin: boolean;
+                isActive: boolean;
+                lastLogin: string;
+            };
+        }&gt;;
+        
+        // System functionality
+        mainFunctions: Array&lt;{ name: string }&gt;;
+        supportedBusinessServices: Array&lt;{
+            serviceId: { title: string };
+        }&gt;;
+        
+        // Technical specifications
+        technology: {
+            programming_languages: string;
+            database: string;
+            operating_system: string;
+            frameworks: string;
+        };
+        
+        // User domains with detailed metrics
+        user_domains: {
+            headquarters: UserDomainInfo;
+            tax_offices: UserDomainInfo;
+            taxpayers: UserDomainInfo;
+            businesses: UserDomainInfo;
+            other_orgs: UserDomainInfo;
+        };
+        
+        // Quality metrics (50+ boolean and string fields)
+        quality_metrics: {
+            requirements_coverage: boolean;
+            change_time: string;
+            error_free: boolean;
+            // ... many more quality indicators
+        };
+        
+        // And 100+ more fields...
+    };
+}
+
+interface UserDomainInfo {
+    unit_name: string;
+    estimated_users: number;
+    time_limit: string;
+    peak_time: string;
+    used_features: string[];
+}</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Word Export Module. Released under the MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
