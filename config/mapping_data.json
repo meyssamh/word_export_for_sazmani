@@ -1,0 +1,120 @@
+{
+  "mappings": [
+    {
+      "placeholder": "title_1",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title_description",
+      "jsonPath": "formData.title_description"
+    },
+    {
+      "placeholder": "data_type",
+      "jsonPath": "formData.data_type"
+    },
+    {
+      "placeholder": "data_type_description",
+      "jsonPath": "formData.data_type_description"
+    },
+    {
+      "placeholder": "data_owners",
+      "jsonPath": "formData.dataOwners"
+    },
+    {
+      "placeholder": "data_owners_description",
+      "jsonPath": "formData.dataOwners_description"
+    },
+    {
+      "placeholder": "form_completed_by",
+      "jsonPath": "formData.formCompletedBy"
+    },
+    {
+      "placeholder": "form_completed_by_description",
+      "jsonPath": "formData.formCompletedBy_description"
+    },
+    {
+      "placeholder": "data_description",
+      "jsonPath": "formData.dataDescription"
+    },
+    {
+      "placeholder": "data_description_description",
+      "jsonPath": "formData.dataDescription_description"
+    },
+    {
+      "placeholder": "related_systems",
+      "jsonPath": "formData.relatedSystems"
+    },
+    {
+      "placeholder": "related_systems_description",
+      "jsonPath": "formData.relatedSystems_description"
+    },
+    {
+      "placeholder": "related_systems_2",
+      "jsonPath": "formData.relatedSystems_2"
+    },
+    {
+      "placeholder": "related_systems_2_description",
+      "jsonPath": "formData.relatedSystems_2_description"
+    },
+    {
+      "placeholder": "value_added_services",
+      "jsonPath": "formData.valueAddedServices"
+    },
+    {
+      "placeholder": "value_added_services_description",
+      "jsonPath": "formData.valueAddedServices_description"
+    },
+    {
+      "placeholder": "main_characterictics",
+      "jsonPath": "formData.mainCharacterictics"
+    },
+    {
+      "placeholder": "main_characterictics_description",
+      "jsonPath": "formData.mainCharacterictics_description"
+    },
+    {
+      "placeholder": "data_types",
+      "jsonPath": "formData.dataTypes"
+    },
+    {
+      "placeholder": "data_types_description",
+      "jsonPath": "formData.dataTypes_description"
+    },
+    {
+      "placeholder": "confidentiality",
+      "jsonPath": "formData.confidentiality"
+    },
+    {
+      "placeholder": "confidentiality_description",
+      "jsonPath": "formData.confidentiality_description"
+    },
+    {
+      "placeholder": "integrity",
+      "jsonPath": "formData.integrity"
+    },
+    {
+      "placeholder": "integrity_description",
+      "jsonPath": "formData.integrity_description"
+    },
+    {
+      "placeholder": "availability",
+      "jsonPath": "formData.availability"
+    },
+    {
+      "placeholder": "availability_description",
+      "jsonPath": "formData.availability_description"
+    },
+    {
+      "placeholder": "impact_assessment",
+      "jsonPath": "formData.impactAssessment"
+    },
+    {
+      "placeholder": "impact_assessment_description",
+      "jsonPath": "formData.impactAssessment_description"
+    }
+  ]
+}

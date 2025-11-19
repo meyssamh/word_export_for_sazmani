@@ -1,0 +1,128 @@
+{
+  "mappings": [
+    {
+      "placeholder": "title_1",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title_description",
+      "jsonPath": "formData.title_description"
+    },
+    {
+      "placeholder": "index",
+      "jsonPath": "formData.index"
+    },
+    {
+      "placeholder": "index_description",
+      "jsonPath": "formData.index_description"
+    },
+    {
+      "placeholder": "owner",
+      "jsonPath": "formData.owner"
+    },
+    {
+      "placeholder": "owner_description",
+      "jsonPath": "formData.owner_description"
+    },
+    {
+      "placeholder": "goal",
+      "jsonPath": "formData.goal"
+    },
+    {
+      "placeholder": "goal_description",
+      "jsonPath": "formData.goal_description"
+    },
+    {
+      "placeholder": "range",
+      "jsonPath": "formData.range"
+    },
+    {
+      "placeholder": "range_description",
+      "jsonPath": "formData.range_description"
+    },
+    {
+      "placeholder": "unit",
+      "jsonPath": "formData.unit"
+    },
+    {
+      "placeholder": "unit_description",
+      "jsonPath": "formData.unit_description"
+    },
+    {
+      "placeholder": "process_inputs",
+      "jsonPath": "formData.process-inputs"
+    },
+    {
+      "placeholder": "process_inputs_description",
+      "jsonPath": "formData.process-inputs_description"
+    },
+    {
+      "placeholder": "process_outputs",
+      "jsonPath": "formData.process-outputs"
+    },
+    {
+      "placeholder": "process_outputs_description",
+      "jsonPath": "formData.process-outputs_description"
+    },
+    {
+      "placeholder": "main_steps_of_the_process",
+      "jsonPath": "formData.main-steps-of-the-process"
+    },
+    {
+      "placeholder": "main_steps_of_the_process_description",
+      "jsonPath": "formData.main-steps-of-the-process_description"
+    },
+    {
+      "placeholder": "resources",
+      "jsonPath": "formData.resources"
+    },
+    {
+      "placeholder": "resources_description",
+      "jsonPath": "formData.resources_description"
+    },
+    {
+      "placeholder": "process_flow",
+      "jsonPath": "formData.process-flow"
+    },
+    {
+      "placeholder": "process_flow_description",
+      "jsonPath": "formData.process-flow_description"
+    },
+    {
+      "placeholder": "key_performance_indicators",
+      "jsonPath": "formData.key-performance-indicators"
+    },
+    {
+      "placeholder": "key_performance_indicators_description",
+      "jsonPath": "formData.key-performance-indicators_description"
+    },
+    {
+      "placeholder": "possible_risks",
+      "jsonPath": "formData.possible-risks"
+    },
+    {
+      "placeholder": "possible_risks_description",
+      "jsonPath": "formData.possible-risks_description"
+    },
+    {
+      "placeholder": "related_documents_and_forms",
+      "jsonPath": "formData.related-documents-and-forms"
+    },
+    {
+      "placeholder": "related_documents_and_forms_description",
+      "jsonPath": "formData.related-documents-and-forms_description"
+    },
+    {
+      "placeholder": "process_maturity_level",
+      "jsonPath": "formData.process_maturity_level"
+    },
+    {
+      "placeholder": "process_maturity_level_description",
+      "jsonPath": "formData.process_maturity_level_description"
+    }
+  ]
+}
