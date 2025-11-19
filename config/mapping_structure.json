@@ -1,0 +1,640 @@
+{
+  "mappings": [
+    {
+      "placeholder": "title_1",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title_description",
+      "jsonPath": "formData.title_description"
+    },
+    {
+      "placeholder": "interviewees",
+      "jsonPath": "formData.interviewees"
+    },
+    {
+      "placeholder": "interviewees_description",
+      "jsonPath": "formData.interviewees_description"
+    },
+    {
+      "placeholder": "form_completed_by",
+      "jsonPath": "formData.formCompletedBy"
+    },
+    {
+      "placeholder": "form_completed_by_description",
+      "jsonPath": "formData.formCompletedBy_description"
+    },
+    {
+      "placeholder": "data_center",
+      "jsonPath": "formData.data_center"
+    },
+    {
+      "placeholder": "data_center_description",
+      "jsonPath": "formData.data_center_description"
+    },
+    {
+      "placeholder": "network_diagrams",
+      "jsonPath": "formData.network-diagrams"
+    },
+    {
+      "placeholder": "network_diagrams_description",
+      "jsonPath": "formData.network-diagrams_description"
+    },
+    {
+      "placeholder": "structured_cabling",
+      "jsonPath": "formData.structured-cabling"
+    },
+    {
+      "placeholder": "structured_cabling_description",
+      "jsonPath": "formData.structured-cabling_description"
+    },
+    {
+      "placeholder": "vlan_implementation",
+      "jsonPath": "formData.vlan-implementation"
+    },
+    {
+      "placeholder": "vlan_implementation_description",
+      "jsonPath": "formData.vlan-implementation_description"
+    },
+    {
+      "placeholder": "network_inventory",
+      "jsonPath": "formData.network-inventory"
+    },
+    {
+      "placeholder": "network_inventory_description",
+      "jsonPath": "formData.network-inventory_description"
+    },
+    {
+      "placeholder": "redundancy",
+      "jsonPath": "formData.redundancy"
+    },
+    {
+      "placeholder": "redundancy_description",
+      "jsonPath": "formData.redundancy_description"
+    },
+    {
+      "placeholder": "internet",
+      "jsonPath": "formData.internet"
+    },
+    {
+      "placeholder": "internet_description",
+      "jsonPath": "formData.internet_description"
+    },
+    {
+      "placeholder": "local",
+      "jsonPath": "formData.local"
+    },
+    {
+      "placeholder": "local_description",
+      "jsonPath": "formData.local_description"
+    },
+    {
+      "placeholder": "custom",
+      "jsonPath": "formData.custom"
+    },
+    {
+      "placeholder": "custom_description",
+      "jsonPath": "formData.custom_description"
+    },
+    {
+      "placeholder": "users",
+      "jsonPath": "formData.users"
+    },
+    {
+      "placeholder": "users_description",
+      "jsonPath": "formData.users_description"
+    },
+    {
+      "placeholder": "auth",
+      "jsonPath": "formData.auth"
+    },
+    {
+      "placeholder": "auth_description",
+      "jsonPath": "formData.auth_description"
+    },
+    {
+      "placeholder": "internet_rbac",
+      "jsonPath": "formData.internet_rbac"
+    },
+    {
+      "placeholder": "internet_rbac_description",
+      "jsonPath": "formData.internet_rbac_description"
+    },
+    {
+      "placeholder": "internet_scheduling",
+      "jsonPath": "formData.internet_scheduling"
+    },
+    {
+      "placeholder": "internet_scheduling_description",
+      "jsonPath": "formData.internet_scheduling_description"
+    },
+    {
+      "placeholder": "internet_auth",
+      "jsonPath": "formData.internet_auth"
+    },
+    {
+      "placeholder": "internet_auth_description",
+      "jsonPath": "formData.internet_auth_description"
+    },
+    {
+      "placeholder": "internet_monitoring",
+      "jsonPath": "formData.internet_monitoring"
+    },
+    {
+      "placeholder": "internet_monitoring_description",
+      "jsonPath": "formData.internet_monitoring_description"
+    },
+    {
+      "placeholder": "internet_reports",
+      "jsonPath": "formData.internet_reports"
+    },
+    {
+      "placeholder": "internet_reports_description",
+      "jsonPath": "formData.internet_reports_description"
+    },
+    {
+      "placeholder": "internet_alerts",
+      "jsonPath": "formData.internet_alerts"
+    },
+    {
+      "placeholder": "internet_alerts_description",
+      "jsonPath": "formData.internet_alerts_description"
+    },
+    {
+      "placeholder": "monitoring_and_control",
+      "jsonPath": "formData.monitoring_and_control"
+    },
+    {
+      "placeholder": "monitoring_and_control_description",
+      "jsonPath": "formData.monitoring_and_control_description"
+    },
+    {
+      "placeholder": "access",
+      "jsonPath": "formData.access"
+    },
+    {
+      "placeholder": "access_description",
+      "jsonPath": "formData.access_description"
+    },
+    {
+      "placeholder": "backup",
+      "jsonPath": "formData.backup"
+    },
+    {
+      "placeholder": "backup_description",
+      "jsonPath": "formData.backup_description"
+    },
+    {
+      "placeholder": "remote_connection",
+      "jsonPath": "formData.remote_connection"
+    },
+    {
+      "placeholder": "remote_connection_description",
+      "jsonPath": "formData.remote_connection_description"
+    },
+    {
+      "placeholder": "configuration_change_management",
+      "jsonPath": "formData.configuration-change-management"
+    },
+    {
+      "placeholder": "configuration_change_management_description",
+      "jsonPath": "formData.configuration-change-management_description"
+    },
+    {
+      "placeholder": "server_infrastructure_monitoring",
+      "jsonPath": "formData.server-infrastructure-monitoring"
+    },
+    {
+      "placeholder": "server_infrastructure_monitoring_description",
+      "jsonPath": "formData.server-infrastructure-monitoring_description"
+    },
+    {
+      "placeholder": "ipam_documentation",
+      "jsonPath": "formData.ipam-documentation"
+    },
+    {
+      "placeholder": "ipam_documentation_description",
+      "jsonPath": "formData.ipam-documentation_description"
+    },
+    {
+      "placeholder": "ticketing_helpdesk",
+      "jsonPath": "formData.ticketing-helpdesk"
+    },
+    {
+      "placeholder": "ticketing_helpdesk_description",
+      "jsonPath": "formData.ticketing-helpdesk_description"
+    },
+    {
+      "placeholder": "security_ids_ips_siem",
+      "jsonPath": "formData.security-ids-ips-siem"
+    },
+    {
+      "placeholder": "security_ids_ips_siem_description",
+      "jsonPath": "formData.security-ids-ips-siem_description"
+    },
+    {
+      "placeholder": "traffic_analysis_troubleshooting",
+      "jsonPath": "formData.traffic-analysis-troubleshooting"
+    },
+    {
+      "placeholder": "traffic_analysis_troubleshooting_description",
+      "jsonPath": "formData.traffic-analysis-troubleshooting_description"
+    },
+    {
+      "placeholder": "automation_orchestration",
+      "jsonPath": "formData.automation-orchestration"
+    },
+    {
+      "placeholder": "automation_orchestration_description",
+      "jsonPath": "formData.automation-orchestration_description"
+    },
+    {
+      "placeholder": "reporting_dashboard",
+      "jsonPath": "formData.reporting-dashboard"
+    },
+    {
+      "placeholder": "reporting_dashboard_description",
+      "jsonPath": "formData.reporting-dashboard_description"
+    },
+    {
+      "placeholder": "access_identity_management",
+      "jsonPath": "formData.access-identity-management"
+    },
+    {
+      "placeholder": "access_identity_management_description",
+      "jsonPath": "formData.access-identity-management_description"
+    },
+    {
+      "placeholder": "public_key_infrastructure",
+      "jsonPath": "formData.public_key_infrastructure"
+    },
+    {
+      "placeholder": "public_key_infrastructure_description",
+      "jsonPath": "formData.public_key_infrastructure_description"
+    },
+    {
+      "placeholder": "network_staff_count",
+      "jsonPath": "formData.network_staff_count"
+    },
+    {
+      "placeholder": "network_staff_count_description",
+      "jsonPath": "formData.network_staff_count_description"
+    },
+    {
+      "placeholder": "network_team_certification",
+      "jsonPath": "formData.network_team_certification"
+    },
+    {
+      "placeholder": "network_team_certification_description",
+      "jsonPath": "formData.network_team_certification_description"
+    },
+    {
+      "placeholder": "network_task_access_separation",
+      "jsonPath": "formData.network_task_access_separation"
+    },
+    {
+      "placeholder": "network_task_access_separation_description",
+      "jsonPath": "formData.network_task_access_separation_description"
+    },
+    {
+      "placeholder": "network_emergency_availability",
+      "jsonPath": "formData.network_emergency_availability"
+    },
+    {
+      "placeholder": "network_emergency_availability_description",
+      "jsonPath": "formData.network_emergency_availability_description"
+    },
+    {
+      "placeholder": "network_team_training",
+      "jsonPath": "formData.network_team_training"
+    },
+    {
+      "placeholder": "network_team_training_description",
+      "jsonPath": "formData.network_team_training_description"
+    },
+    {
+      "placeholder": "network_backup_roles",
+      "jsonPath": "formData.network_backup_roles"
+    },
+    {
+      "placeholder": "network_backup_roles_description",
+      "jsonPath": "formData.network_backup_roles_description"
+    },
+    {
+      "placeholder": "network_kpi_evaluation",
+      "jsonPath": "formData.network_kpi_evaluation"
+    },
+    {
+      "placeholder": "network_kpi_evaluation_description",
+      "jsonPath": "formData.network_kpi_evaluation_description"
+    },
+    {
+      "placeholder": "access_control",
+      "jsonPath": "formData.access-control"
+    },
+    {
+      "placeholder": "access_control_description",
+      "jsonPath": "formData.access-control_description"
+    },
+    {
+      "placeholder": "network_access_control",
+      "jsonPath": "formData.network_access_control"
+    },
+    {
+      "placeholder": "network_access_control_description",
+      "jsonPath": "formData.network_access_control_description"
+    },
+    {
+      "placeholder": "network_segmentation",
+      "jsonPath": "formData.network_segmentation"
+    },
+    {
+      "placeholder": "network_segmentation_description",
+      "jsonPath": "formData.network_segmentation_description"
+    },
+    {
+      "placeholder": "firewalls",
+      "jsonPath": "formData.firewalls"
+    },
+    {
+      "placeholder": "firewalls_description",
+      "jsonPath": "formData.firewalls_description"
+    },
+    {
+      "placeholder": "ids_ips",
+      "jsonPath": "formData.ids_ips"
+    },
+    {
+      "placeholder": "ids_ips_description",
+      "jsonPath": "formData.ids_ips_description"
+    },
+    {
+      "placeholder": "network_traffic_analysis",
+      "jsonPath": "formData.network_traffic_analysis"
+    },
+    {
+      "placeholder": "network_traffic_analysis_description",
+      "jsonPath": "formData.network_traffic_analysis_description"
+    },
+    {
+      "placeholder": "patch_management",
+      "jsonPath": "formData.patch_management"
+    },
+    {
+      "placeholder": "patch_management_description",
+      "jsonPath": "formData.patch_management_description"
+    },
+    {
+      "placeholder": "hardware_security",
+      "jsonPath": "formData.hardware_security"
+    },
+    {
+      "placeholder": "hardware_security_description",
+      "jsonPath": "formData.hardware_security_description"
+    },
+    {
+      "placeholder": "least_privilege",
+      "jsonPath": "formData.least_privilege"
+    },
+    {
+      "placeholder": "least_privilege_description",
+      "jsonPath": "formData.least_privilege_description"
+    },
+    {
+      "placeholder": "data_encryption",
+      "jsonPath": "formData.data_encryption"
+    },
+    {
+      "placeholder": "data_encryption_description",
+      "jsonPath": "formData.data_encryption_description"
+    },
+    {
+      "placeholder": "authentication_methods_current",
+      "jsonPath": "formData.authentication_methods_current"
+    },
+    {
+      "placeholder": "authentication_methods_current_description",
+      "jsonPath": "formData.authentication_methods_current_description"
+    },
+    {
+      "placeholder": "authentication_types_supported",
+      "jsonPath": "formData.authentication_types_supported"
+    },
+    {
+      "placeholder": "authentication_types_supported_description",
+      "jsonPath": "formData.authentication_types_supported_description"
+    },
+    {
+      "placeholder": "sso_support",
+      "jsonPath": "formData.sso_support"
+    },
+    {
+      "placeholder": "sso_support_description",
+      "jsonPath": "formData.sso_support_description"
+    },
+    {
+      "placeholder": "authentication_protocols",
+      "jsonPath": "formData.authentication_protocols"
+    },
+    {
+      "placeholder": "authentication_protocols_description",
+      "jsonPath": "formData.authentication_protocols_description"
+    },
+    {
+      "placeholder": "two_factor_authentication",
+      "jsonPath": "formData.two_factor_authentication"
+    },
+    {
+      "placeholder": "two_factor_authentication_description",
+      "jsonPath": "formData.two_factor_authentication_description"
+    },
+    {
+      "placeholder": "authentication_capacity",
+      "jsonPath": "formData.authentication_capacity"
+    },
+    {
+      "placeholder": "authentication_capacity_description",
+      "jsonPath": "formData.authentication_capacity_description"
+    },
+    {
+      "placeholder": "pki_usage",
+      "jsonPath": "formData.pki_usage"
+    },
+    {
+      "placeholder": "pki_usage_description",
+      "jsonPath": "formData.pki_usage_description"
+    },
+    {
+      "placeholder": "auth_policies_standards",
+      "jsonPath": "formData.auth_policies_standards"
+    },
+    {
+      "placeholder": "auth_policies_standards_description",
+      "jsonPath": "formData.auth_policies_standards_description"
+    },
+    {
+      "placeholder": "user_role_management_tools",
+      "jsonPath": "formData.user_role_management_tools"
+    },
+    {
+      "placeholder": "user_role_management_tools_description",
+      "jsonPath": "formData.user_role_management_tools_description"
+    },
+    {
+      "placeholder": "isms_implementation",
+      "jsonPath": "formData.isms_implementation"
+    },
+    {
+      "placeholder": "isms_implementation_description",
+      "jsonPath": "formData.isms_implementation_description"
+    },
+    {
+      "placeholder": "security_benchmark_usage",
+      "jsonPath": "formData.security_benchmark_usage"
+    },
+    {
+      "placeholder": "security_benchmark_usage_description",
+      "jsonPath": "formData.security_benchmark_usage_description"
+    },
+    {
+      "placeholder": "network_policy_documentation",
+      "jsonPath": "formData.network_policy_documentation"
+    },
+    {
+      "placeholder": "network_policy_documentation_description",
+      "jsonPath": "formData.network_policy_documentation_description"
+    },
+    {
+      "placeholder": "drp",
+      "jsonPath": "formData.drp"
+    },
+    {
+      "placeholder": "drp_description",
+      "jsonPath": "formData.drp_description"
+    },
+    {
+      "placeholder": "bcp",
+      "jsonPath": "formData.bcp"
+    },
+    {
+      "placeholder": "bcp_description",
+      "jsonPath": "formData.bcp_description"
+    },
+    {
+      "placeholder": "security_scans",
+      "jsonPath": "formData.security_scans"
+    },
+    {
+      "placeholder": "security_scans_description",
+      "jsonPath": "formData.security_scans_description"
+    },
+    {
+      "placeholder": "physical_logical_map_documentation",
+      "jsonPath": "formData.physical_logical_map_documentation"
+    },
+    {
+      "placeholder": "physical_logical_map_documentation_description",
+      "jsonPath": "formData.physical_logical_map_documentation_description"
+    },
+    {
+      "placeholder": "logical_network_map",
+      "jsonPath": "formData.logical_network_map"
+    },
+    {
+      "placeholder": "logical_network_map_description",
+      "jsonPath": "formData.logical_network_map_description"
+    },
+    {
+      "placeholder": "ip_addressing_documentation",
+      "jsonPath": "formData.ip_addressing_documentation"
+    },
+    {
+      "placeholder": "ip_addressing_documentation_description",
+      "jsonPath": "formData.ip_addressing_documentation_description"
+    },
+    {
+      "placeholder": "equipment_configuration_docs",
+      "jsonPath": "formData.equipment_configuration_docs"
+    },
+    {
+      "placeholder": "equipment_configuration_docs_description",
+      "jsonPath": "formData.equipment_configuration_docs_description"
+    },
+    {
+      "placeholder": "change_documentation",
+      "jsonPath": "formData.change_documentation"
+    },
+    {
+      "placeholder": "change_documentation_description",
+      "jsonPath": "formData.change_documentation_description"
+    },
+    {
+      "placeholder": "security_documentation",
+      "jsonPath": "formData.security_documentation"
+    },
+    {
+      "placeholder": "security_documentation_description",
+      "jsonPath": "formData.security_documentation_description"
+    },
+    {
+      "placeholder": "admin_and_access_docs",
+      "jsonPath": "formData.admin_and_access_docs"
+    },
+    {
+      "placeholder": "admin_and_access_docs_description",
+      "jsonPath": "formData.admin_and_access_docs_description"
+    },
+    {
+      "placeholder": "backup_and_recovery_docs",
+      "jsonPath": "formData.backup_and_recovery_docs"
+    },
+    {
+      "placeholder": "backup_and_recovery_docs_description",
+      "jsonPath": "formData.backup_and_recovery_docs_description"
+    },
+    {
+      "placeholder": "server_technical_docs",
+      "jsonPath": "formData.server_technical_docs"
+    },
+    {
+      "placeholder": "server_technical_docs_description",
+      "jsonPath": "formData.server_technical_docs_description"
+    },
+    {
+      "placeholder": "monitoring_and_reporting_docs",
+      "jsonPath": "formData.monitoring_and_reporting_docs"
+    },
+    {
+      "placeholder": "monitoring_and_reporting_docs_description",
+      "jsonPath": "formData.monitoring_and_reporting_docs_description"
+    },
+    {
+      "placeholder": "sop_documentation",
+      "jsonPath": "formData.sop_documentation"
+    },
+    {
+      "placeholder": "sop_documentation_description",
+      "jsonPath": "formData.sop_documentation_description"
+    },
+    {
+      "placeholder": "compliance_and_audit_docs_national",
+      "jsonPath": "formData.compliance_and_audit_docs_national"
+    },
+    {
+      "placeholder": "compliance_and_audit_docs_national_description",
+      "jsonPath": "formData.compliance_and_audit_docs_national_description"
+    },
+    {
+      "placeholder": "compliance_and_audit_docs_international",
+      "jsonPath": "formData.compliance_and_audit_docs_international"
+    },
+    {
+      "placeholder": "compliance_and_audit_docs_international_description",
+      "jsonPath": "formData.compliance_and_audit_docs_international_description"
+    }
+  ]
+}

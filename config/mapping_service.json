@@ -1,0 +1,360 @@
+{
+  "mappings": [
+    {
+      "placeholder": "title_1",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title",
+      "jsonPath": "formData.title"
+    },
+    {
+      "placeholder": "title_description",
+      "jsonPath": "formData.title_description"
+    },
+    {
+      "placeholder": "service_owners",
+      "jsonPath": "formData.serviceOwners"
+    },
+    {
+      "placeholder": "service_owners_description",
+      "jsonPath": "formData.serviceOwners_description"
+    },
+    {
+      "placeholder": "form_completed_by",
+      "jsonPath": "formData.formCompletedBy"
+    },
+    {
+      "placeholder": "form_completed_by_description",
+      "jsonPath": "formData.formCompletedBy_description"
+    },
+    {
+      "placeholder": "service_unique_code",
+      "jsonPath": "formData.serviceUniqueCode"
+    },
+    {
+      "placeholder": "service_unique_code_description",
+      "jsonPath": "formData.serviceUniqueCode_description"
+    },
+    {
+      "placeholder": "regions",
+      "jsonPath": "formData.regions"
+    },
+    {
+      "placeholder": "regions_description",
+      "jsonPath": "formData.regions_description"
+    },
+    {
+      "placeholder": "service_type",
+      "jsonPath": "formData.serviceType"
+    },
+    {
+      "placeholder": "service_type_description",
+      "jsonPath": "formData.serviceType_description"
+    },
+    {
+      "placeholder": "service_level",
+      "jsonPath": "formData.serviceLevel"
+    },
+    {
+      "placeholder": "service_level_description",
+      "jsonPath": "formData.serviceLevel_description"
+    },
+    {
+      "placeholder": "service_initiation",
+      "jsonPath": "formData.serviceInitiation"
+    },
+    {
+      "placeholder": "service_initiation_description",
+      "jsonPath": "formData.serviceInitiation_description"
+    },
+    {
+      "placeholder": "strategic_importance",
+      "jsonPath": "formData.strategicImportance"
+    },
+    {
+      "placeholder": "strategic_importance_description",
+      "jsonPath": "formData.strategicImportance_description"
+    },
+    {
+      "placeholder": "required_documents",
+      "jsonPath": "formData.requiredDocuments"
+    },
+    {
+      "placeholder": "required_documents_description",
+      "jsonPath": "formData.requiredDocuments_description"
+    },
+    {
+      "placeholder": "average_service_time",
+      "jsonPath": "formData.averageServiceTime"
+    },
+    {
+      "placeholder": "average_service_time_description",
+      "jsonPath": "formData.averageServiceTime_description"
+    },
+    {
+      "placeholder": "service_ferequency",
+      "jsonPath": "formData.serviceFerequency"
+    },
+    {
+      "placeholder": "service_ferequency_description",
+      "jsonPath": "formData.serviceFerequency_description"
+    },
+    {
+      "placeholder": "related_laws_regulations",
+      "jsonPath": "formData.relatedLawsRegulations"
+    },
+    {
+      "placeholder": "related_laws_regulations_description",
+      "jsonPath": "formData.relatedLawsRegulations_description"
+    },
+    {
+      "placeholder": "service_partners",
+      "jsonPath": "formData.servicePartners"
+    },
+    {
+      "placeholder": "service_partners_description",
+      "jsonPath": "formData.servicePartners_description"
+    },
+    {
+      "placeholder": "recipients_groups",
+      "jsonPath": "formData.recipientsGroups"
+    },
+    {
+      "placeholder": "recipients_groups_description",
+      "jsonPath": "formData.recipientsGroups_description"
+    },
+    {
+      "placeholder": "service_satisfaction_level",
+      "jsonPath": "formData.service_satisfaction_level"
+    },
+    {
+      "placeholder": "service_satisfaction_level_description",
+      "jsonPath": "formData.service_satisfaction_level_description"
+    },
+    {
+      "placeholder": "supporting_systems",
+      "jsonPath": "formData.supportingSystems"
+    },
+    {
+      "placeholder": "supporting_systems_description",
+      "jsonPath": "formData.supportingSystems_description"
+    },
+    {
+      "placeholder": "system_support_level",
+      "jsonPath": "formData.systemSupportLevel"
+    },
+    {
+      "placeholder": "system_support_level_description",
+      "jsonPath": "formData.systemSupportLevel_description"
+    },
+    {
+      "placeholder": "service_data",
+      "jsonPath": "formData.serviceData"
+    },
+    {
+      "placeholder": "service_data_description",
+      "jsonPath": "formData.serviceData_description"
+    },
+    {
+      "placeholder": "data_integration_level",
+      "jsonPath": "formData.data_integration_level"
+    },
+    {
+      "placeholder": "data_integration_level_description",
+      "jsonPath": "formData.data_integration_level_description"
+    },
+    {
+      "placeholder": "specialized_human_resources",
+      "jsonPath": "formData.specializedHumanResources"
+    },
+    {
+      "placeholder": "specialized_human_resources_description",
+      "jsonPath": "formData.specializedHumanResources_description"
+    },
+    {
+      "placeholder": "human_roles",
+      "jsonPath": "formData.humanRoles"
+    },
+    {
+      "placeholder": "human_roles_description",
+      "jsonPath": "formData.humanRoles_description"
+    },
+    {
+      "placeholder": "hr_assessment",
+      "jsonPath": "formData.hrAssessment"
+    },
+    {
+      "placeholder": "hr_assessment_description",
+      "jsonPath": "formData.hrAssessment_description"
+    },
+    {
+      "placeholder": "related_processes",
+      "jsonPath": "formData.related_processes"
+    },
+    {
+      "placeholder": "related_processes_description",
+      "jsonPath": "formData.related_processes_description"
+    },
+    {
+      "placeholder": "process_coverage_status",
+      "jsonPath": "formData.process_coverage_status"
+    },
+    {
+      "placeholder": "process_coverage_status_description",
+      "jsonPath": "formData.process_coverage_status_description"
+    },
+    {
+      "placeholder": "service_delivery_channels",
+      "jsonPath": "formData.serviceDeliveryChannels"
+    },
+    {
+      "placeholder": "service_delivery_channels_description",
+      "jsonPath": "formData.serviceDeliveryChannels_description"
+    },
+    {
+      "placeholder": "service_delivery_platform",
+      "jsonPath": "formData.serviceDeliveryPlatform"
+    },
+    {
+      "placeholder": "service_delivery_platform_description",
+      "jsonPath": "formData.serviceDeliveryPlatform_description"
+    },
+    {
+      "placeholder": "communication_type",
+      "jsonPath": "formData.communicationType"
+    },
+    {
+      "placeholder": "communication_type_description",
+      "jsonPath": "formData.communicationType_description"
+    },
+    {
+      "placeholder": "electronic_types",
+      "jsonPath": "formData.electronicTypes"
+    },
+    {
+      "placeholder": "electronic_types_description",
+      "jsonPath": "formData.electronicTypes_description"
+    },
+    {
+      "placeholder": "service_type_status",
+      "jsonPath": "formData.serviceTypeStatus"
+    },
+    {
+      "placeholder": "service_type_status_description",
+      "jsonPath": "formData.serviceTypeStatus_description"
+    },
+    {
+      "placeholder": "electronic_methods",
+      "jsonPath": "formData.electronicMethods"
+    },
+    {
+      "placeholder": "electronic_methods_description",
+      "jsonPath": "formData.electronicMethods_description"
+    },
+    {
+      "placeholder": "service_delivery_type",
+      "jsonPath": "formData.serviceDeliveryType"
+    },
+    {
+      "placeholder": "service_delivery_type_description",
+      "jsonPath": "formData.serviceDeliveryType_description"
+    },
+    {
+      "placeholder": "electronic_service_methods",
+      "jsonPath": "formData.electronicServiceMethods"
+    },
+    {
+      "placeholder": "electronic_service_methods_description",
+      "jsonPath": "formData.electronicServiceMethods_description"
+    },
+    {
+      "placeholder": "additional_information",
+      "jsonPath": "formData.additionalInformation"
+    },
+    {
+      "placeholder": "additional_information_description",
+      "jsonPath": "formData.additionalInformation_description"
+    },
+    {
+      "placeholder": "electronic_service_status",
+      "jsonPath": "formData.electronicServiceStatus"
+    },
+    {
+      "placeholder": "electronic_service_status_description",
+      "jsonPath": "formData.electronicServiceStatus_description"
+    },
+    {
+      "placeholder": "authentication_issues",
+      "jsonPath": "formData.authenticationIssues"
+    },
+    {
+      "placeholder": "authentication_issues_description",
+      "jsonPath": "formData.authenticationIssues_description"
+    },
+    {
+      "placeholder": "document_authentication_issues",
+      "jsonPath": "formData.documentAuthenticationIssues"
+    },
+    {
+      "placeholder": "document_authentication_issues_description",
+      "jsonPath": "formData.documentAuthenticationIssues_description"
+    },
+    {
+      "placeholder": "infrastructure_issues",
+      "jsonPath": "formData.infrastructureIssues"
+    },
+    {
+      "placeholder": "infrastructure_issues_description",
+      "jsonPath": "formData.infrastructureIssues_description"
+    },
+    {
+      "placeholder": "database_issues",
+      "jsonPath": "formData.databaseIssues"
+    },
+    {
+      "placeholder": "database_issues_description",
+      "jsonPath": "formData.databaseIssues_description"
+    },
+    {
+      "placeholder": "process_complexity_issues",
+      "jsonPath": "formData.processComplexityIssues"
+    },
+    {
+      "placeholder": "process_complexity_issues_description",
+      "jsonPath": "formData.processComplexityIssues_description"
+    },
+    {
+      "placeholder": "skills_issues",
+      "jsonPath": "formData.skillsIssues"
+    },
+    {
+      "placeholder": "skills_issues_description",
+      "jsonPath": "formData.skillsIssues_description"
+    },
+    {
+      "placeholder": "system_quality_issues",
+      "jsonPath": "formData.systemQualityIssues"
+    },
+    {
+      "placeholder": "system_quality_issues_description",
+      "jsonPath": "formData.systemQualityIssues_description"
+    },
+    {
+      "placeholder": "user_support_issues",
+      "jsonPath": "formData.userSupportIssues"
+    },
+    {
+      "placeholder": "user_support_issues_description",
+      "jsonPath": "formData.userSupportIssues_description"
+    },
+    {
+      "placeholder": "suggestions",
+      "jsonPath": "formData.suggestions"
+    },
+    {
+      "placeholder": "suggestions_description",
+      "jsonPath": "formData.suggestions_description"
+    }
+  ]
+}
