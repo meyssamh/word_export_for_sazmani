@@ -69,12 +69,12 @@
       "jsonPath": "formData.valueAddedServices_description"
     },
     {
-      "placeholder": "main_characterictics",
-      "jsonPath": "formData.mainCharacterictics"
+      "placeholder": "main_characteristics",
+      "jsonPath": "formData.mainCharacteristics"
     },
     {
-      "placeholder": "main_characterictics_description",
-      "jsonPath": "formData.mainCharacterictics_description"
+      "placeholder": "main_characteristics_description",
+      "jsonPath": "formData.mainCharacteristics_description"
     },
     {
       "placeholder": "data_types",

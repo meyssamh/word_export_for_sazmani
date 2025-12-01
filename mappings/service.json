@@ -37,6 +37,22 @@
       "jsonPath": "formData.serviceUniqueCode_description"
     },
     {
+      "placeholder": "service_provider",
+      "jsonPath": "formData.serviceProvider"
+    },
+    {
+      "placeholder": "service_provider_description",
+      "jsonPath": "formData.serviceProvider_description"
+    },
+    {
+      "placeholder": "service_desc",
+      "jsonPath": "formData.serviceDescription"
+    },
+    {
+      "placeholder": "service_desc_description",
+      "jsonPath": "formData.serviceDescription_description"
+    },
+    {
       "placeholder": "regions",
       "jsonPath": "formData.regions"
     },
@@ -93,12 +109,12 @@
       "jsonPath": "formData.averageServiceTime_description"
     },
     {
-      "placeholder": "service_ferequency",
-      "jsonPath": "formData.serviceFerequency"
+      "placeholder": "service_frequency",
+      "jsonPath": "formData.serviceFrequency"
     },
     {
-      "placeholder": "service_ferequency_description",
-      "jsonPath": "formData.serviceFerequency_description"
+      "placeholder": "service_frequency_description",
+      "jsonPath": "formData.serviceFrequency_description"
     },
     {
       "placeholder": "related_laws_regulations",
@@ -117,12 +133,12 @@
       "jsonPath": "formData.servicePartners_description"
     },
     {
-      "placeholder": "recipients_groups",
-      "jsonPath": "formData.recipientsGroups"
+      "placeholder": "recipient_groups",
+      "jsonPath": "formData.recipientGroups"
     },
     {
-      "placeholder": "recipients_groups_description",
-      "jsonPath": "formData.recipientsGroups_description"
+      "placeholder": "recipient_groups_description",
+      "jsonPath": "formData.recipientGroups_description"
     },
     {
       "placeholder": "service_satisfaction_level",
