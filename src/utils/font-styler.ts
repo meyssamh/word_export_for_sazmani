@@ -26,7 +26,7 @@ function processMultiLineText(text: string, language: string, specialConfig?: { 
       // Preserve empty lines without markers
       return '';
     }
-    
+
     if (specialConfig) {
       // Wrap each non-empty line with special font markers
       return `${MARKERS.SPECIAL_START}${specialConfig.fontName}|${specialConfig.fontSize}|${line}${MARKERS.SPECIAL_END}`;
@@ -35,7 +35,7 @@ function processMultiLineText(text: string, language: string, specialConfig?: { 
       return `${MARKERS.START}${language}|${line}${MARKERS.END}`;
     }
   });
-  
+
   // Join back with newlines
   return processedLines.join('\n');
 }
@@ -47,9 +47,10 @@ function processMultiLineText(text: string, language: string, specialConfig?: { 
  */
 function getSpecialFontConfig(key: string): { fontName: string; fontSize: number } | null {
   const specialConfigs: { [key: string]: { fontName: string; fontSize: number } } = {
-    'system_title_1': { fontName: 'B Titr', fontSize: 26 }
+    'system_title_1': { fontName: 'B Titr', fontSize: 26 },
+    'title_1': { fontName: 'B Titr', fontSize: 26 },
   };
-  
+
   return specialConfigs[key] || null;
 }
 
@@ -68,7 +69,7 @@ export function wrapDataWithLanguageMarkers(data: TemplateData, currentKey?: str
   if (typeof data === 'string') {
     // Check if this is a special placeholder requiring specific font styling
     const specialConfig = currentKey ? getSpecialFontConfig(currentKey) : null;
-    
+
     if (specialConfig) {
       // Handle special font styling
       if ((data as string).indexOf('\n') !== -1) {
@@ -81,12 +82,12 @@ export function wrapDataWithLanguageMarkers(data: TemplateData, currentKey?: str
     } else {
       // Regular language detection and processing
       const language = detectLanguage(data);
-      
+
       // Check if the text contains newlines
       if ((data as string).indexOf('\n') !== -1) {
         return processMultiLineText(data as string, language);
       }
-      
+
       // Single line text - process normally
       return `${MARKERS.START}${language}|${data}${MARKERS.END}`;
     }
@@ -118,37 +119,37 @@ export function wrapDataWithLanguageMarkers(data: TemplateData, currentKey?: str
  * @returns The modified XML content with fonts applied.
  */
 export function applyFontStyles(xmlContent: string, fontConfig: FontConfig): string {
-    const startRegex = new RegExp(MARKERS.START + '([a-z]+)\\|', 'g');
-    const endRegex = new RegExp(MARKERS.END, 'g');
-    const specialStartRegex = new RegExp(MARKERS.SPECIAL_START + '([^|]+)\\|([0-9]+)\\|', 'g');
-    const specialEndRegex = new RegExp(MARKERS.SPECIAL_END, 'g');
+  const startRegex = new RegExp(MARKERS.START + '([a-z]+)\\|', 'g');
+  const endRegex = new RegExp(MARKERS.END, 'g');
+  const specialStartRegex = new RegExp(MARKERS.SPECIAL_START + '([^|]+)\\|([0-9]+)\\|', 'g');
+  const specialEndRegex = new RegExp(MARKERS.SPECIAL_END, 'g');
 
-    let result = xmlContent;
+  let result = xmlContent;
 
-    // Handle special font styling first
-    result = result.replace(specialStartRegex, (match, fontName, fontSize) => {
-        // Special font styling with specific font name and size
-        return `</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="${fontName}" w:hAnsi="${fontName}" w:cs="${fontName}" w:eastAsia="${fontName}"/><w:sz w:val="${fontSize * 2}"/><w:szCs w:val="${fontSize * 2}"/></w:rPr><w:t xml:space="preserve">`;
-    });
+  // Handle special font styling first
+  result = result.replace(specialStartRegex, (match, fontName, fontSize) => {
+    // Special font styling with specific font name and size
+    return `</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="${fontName}" w:hAnsi="${fontName}" w:cs="${fontName}" w:eastAsia="${fontName}"/><w:sz w:val="${fontSize * 2}"/><w:szCs w:val="${fontSize * 2}"/></w:rPr><w:t xml:space="preserve">`;
+  });
 
-    // Close the special font styling run
-    result = result.replace(specialEndRegex, '</w:t></w:r><w:r><w:rPr></w:rPr><w:t xml:space="preserve">');
+  // Close the special font styling run
+  result = result.replace(specialEndRegex, '</w:t></w:r><w:r><w:rPr></w:rPr><w:t xml:space="preserve">');
 
-    // Handle regular language-based font styling
-    result = result.replace(startRegex, (match, language) => {
-        const fontName = fontConfig[language as keyof FontConfig] || fontConfig.default;
-        
-        // Enhanced XML structure for better font consistency
-        // Includes both complex script (w:cs) and high ANSI (w:hAnsi) for Persian support
-        // And adds RTL support for right-to-left languages
-        const isRtl = language === 'persian';
-        const rtlAttribute = isRtl ? '<w:rtl/>' : '';
-        
-        return `</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="${fontName}" w:hAnsi="${fontName}" w:cs="${fontName}" w:eastAsia="${fontName}"/>${rtlAttribute}</w:rPr><w:t xml:space="preserve">`;
-    });
+  // Handle regular language-based font styling
+  result = result.replace(startRegex, (match, language) => {
+    const fontName = fontConfig[language as keyof FontConfig] || fontConfig.default;
 
-    // Close the regular font styling run and return to default
-    result = result.replace(endRegex, '</w:t></w:r><w:r><w:rPr></w:rPr><w:t xml:space="preserve">');
+    // Enhanced XML structure for better font consistency
+    // Includes both complex script (w:cs) and high ANSI (w:hAnsi) for Persian support
+    // And adds RTL support for right-to-left languages
+    const isRtl = language === 'persian';
+    const rtlAttribute = isRtl ? '<w:rtl/>' : '';
 
-    return result;
+    return `</w:t></w:r><w:r><w:rPr><w:rFonts w:ascii="${fontName}" w:hAnsi="${fontName}" w:cs="${fontName}" w:eastAsia="${fontName}"/>${rtlAttribute}</w:rPr><w:t xml:space="preserve">`;
+  });
+
+  // Close the regular font styling run and return to default
+  result = result.replace(endRegex, '</w:t></w:r><w:r><w:rPr></w:rPr><w:t xml:space="preserve">');
+
+  return result;
 }

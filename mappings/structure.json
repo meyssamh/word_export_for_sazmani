@@ -333,11 +333,11 @@
       "jsonPath": "formData.network_kpi_evaluation_description"
     },
     {
-      "placeholder": "access_control",
+      "placeholder": "access_control_security",
       "jsonPath": "formData.access-control"
     },
     {
-      "placeholder": "access_control_description",
+      "placeholder": "access_control_security_description",
       "jsonPath": "formData.access-control_description"
     },
     {
@@ -541,6 +541,14 @@
       "jsonPath": "formData.physical_logical_map_documentation_description"
     },
     {
+      "placeholder": "physical_network_map",
+      "jsonPath": "formData.physical_network_map"
+    },
+    {
+      "placeholder": "physical_network_map_description",
+      "jsonPath": "formData.physical_network_map_description"
+    },
+    {
       "placeholder": "logical_network_map",
       "jsonPath": "formData.logical_network_map"
     },
@@ -635,6 +643,38 @@
     {
       "placeholder": "compliance_and_audit_docs_international_description",
       "jsonPath": "formData.compliance_and_audit_docs_international_description"
+    },
+    {
+      "placeholder": "internal_wiki",
+      "jsonPath": "formData.internal_wiki"
+    },
+    {
+      "placeholder": "internal_wiki_description",
+      "jsonPath": "formData.internal_wiki_description"
+    },
+    {
+      "placeholder": "physical_equipment",
+      "jsonPath": "formData.physical_equipment"
+    },
+    {
+      "placeholder": "physical_equipment_description",
+      "jsonPath": "formData.physical_equipment_description"
+    },
+    {
+      "placeholder": "descs",
+      "jsonPath": "formData.descriptions"
+    },
+    {
+      "placeholder": "descs_description",
+      "jsonPath": "formData.descriptions_description"
+    },
+    {
+      "placeholder": "problems_suggestions",
+      "jsonPath": "formData.problems_suggestions"
+    },
+    {
+      "placeholder": "problems_suggestions_description",
+      "jsonPath": "formData.problems_suggestions_description"
     }
   ]
 }

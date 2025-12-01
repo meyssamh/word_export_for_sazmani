@@ -31,6 +31,8 @@ export class WordExportModule {
     this.transformer = new DataTransformer(options.mappingPath, {
       outputPath: options.transformerOutputPath || options.outputPath.replace('.docx', '_transformed.json')
     });
+
+    // this.transformer = new DataTransformer(options.mappingPath);
     
     this.generator = new DocumentGenerator({
       templatePath: options.templatePath,
